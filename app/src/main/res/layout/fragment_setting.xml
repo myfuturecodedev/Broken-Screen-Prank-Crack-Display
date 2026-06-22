@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lang_bg_dark">
+    <!-- 1. Header Toolbar matching design layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Go Back"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/lang_text_white" />
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Settings"
+            android:textColor="@color/lang_text_white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 2. Nested Scroll View preventing layout overflow on smaller screens -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="24dp">
+
+            <!-- ================= HELP & USAGE SECTION ================= -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.08"
+                android:text="Help &amp; Usage"
+                android:textAllCaps="true"
+                android:textColor="@color/lang_text_muted"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutHowTo"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:background="@drawable/bg_settings_card"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:id="@+id/iconFrame1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/bg_icon_squircle"
+                    android:backgroundTint="#2D1D4B"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_sparkles"
+                        app:tint="#A855F7" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvHowToTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:text="How to use the effect"
+                    android:textColor="@color/lang_text_white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/tvHowToSub"
+                    app:layout_constraintEnd_toStartOf="@id/chevronHowTo"
+                    app:layout_constraintStart_toEndOf="@id/iconFrame1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tvHowToSub"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Learn how to activate prank effects"
+                    android:textColor="@color/lang_text_muted"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/tvHowToTitle"
+                    app:layout_constraintStart_toStartOf="@id/tvHowToTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvHowToTitle" />
+
+                <ImageView
+                    android:id="@+id/chevronHowTo"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_chevron_right"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ================= EFFECT PREFERENCES SECTION ================= -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.08"
+                android:text="Effect Preferences"
+                android:textAllCaps="true"
+                android:textColor="@color/lang_text_muted"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="144dp"
+                android:background="@drawable/bg_settings_card">
+
+                <!-- Preference Row 1: Vibrate on break -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutVibrateRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:id="@+id/iconFrameVibrate"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/bg_icon_squircle"
+                        android:backgroundTint="#0C2D3A"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_vibration"
+                            app:tint="@color/lang_cyan_glow" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvVibrateTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp"
+                        android:text="Vibrate on break"
+                        android:textColor="@color/lang_text_white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/tvVibrateSub"
+                        app:layout_constraintEnd_toStartOf="@id/switchVibrate"
+                        app:layout_constraintStart_toEndOf="@id/iconFrameVibrate"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tvVibrateSub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Haptic feedback for realistic impact"
+                        android:textColor="@color/lang_text_muted"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/tvVibrateTitle"
+                        app:layout_constraintStart_toStartOf="@id/tvVibrateTitle"
+                        app:layout_constraintTop_toBottomOf="@id/tvVibrateTitle" />
+
+
+                    <!--                    <com.google.android.material.use.material3.MaterialSwitch-->
+                    <!--                        android:id="@+id/switchVibrate"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginEnd="16dp"-->
+                    <!--                        app:thumbTint="@color/switch_thumb_selector"-->
+                    <!--                        app:trackTint="@color/switch_track_selector"-->
+                    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switchVibrate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:thumbTint="#3A7BD5"
+                        app:trackTint="#00D2FF" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Visual Separator Line -->
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="#1E293B"
+                    app:layout_constraintTop_toBottomOf="@id/layoutVibrateRow" />
+
+                <!-- Preference Row 2: Change Language -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutLanguageRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toBottomOf="@id/divider1">
+
+                    <FrameLayout
+                        android:id="@+id/iconFrameLang"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/bg_icon_squircle"
+                        android:backgroundTint="#0F1F3D"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_translate"
+                            app:tint="#3B82F6" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvLangTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp"
+                        android:text="Change Language"
+                        android:textColor="@color/lang_text_white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/tvLangSub"
+                        app:layout_constraintEnd_toStartOf="@id/chevronLang"
+                        app:layout_constraintStart_toEndOf="@id/iconFrameLang"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tvLangSub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="English (US)"
+                        android:textColor="@color/lang_text_muted"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/tvLangTitle"
+                        app:layout_constraintStart_toStartOf="@id/tvLangTitle"
+                        app:layout_constraintTop_toBottomOf="@id/tvLangTitle" />
+
+                    <ImageView
+                        android:id="@+id/chevronLang"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ================= SUPPORT & FEEDBACK SECTION ================= -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.08"
+                android:text="Support &amp; Feedback"
+                android:textAllCaps="true"
+                android:textColor="@color/lang_text_muted"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="144dp"
+                android:background="@drawable/bg_settings_card">
+
+                <!-- Support Row 1: Rate App -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutRateRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:id="@+id/iconFrameRate"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/bg_icon_squircle"
+                        android:backgroundTint="#2E2413"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_star_rate"
+                            app:tint="#EAB308" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvRateTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp"
+                        android:text="Rate App"
+                        android:textColor="@color/lang_text_white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/tvRateSub"
+                        app:layout_constraintEnd_toStartOf="@id/chevronRate"
+                        app:layout_constraintStart_toEndOf="@id/iconFrameRate"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tvRateSub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Share your experience with us"
+                        android:textColor="@color/lang_text_muted"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/tvRateTitle"
+                        app:layout_constraintStart_toStartOf="@id/tvRateTitle"
+                        app:layout_constraintTop_toBottomOf="@id/tvRateTitle" />
+
+                    <ImageView
+                        android:id="@+id/chevronRate"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Divider Line -->
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="#1E293B"
+                    app:layout_constraintTop_toBottomOf="@id/layoutRateRow" />
+
+                <!-- Support Row 2: Share to Friends -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutShareRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toBottomOf="@id/divider2">
+
+                    <FrameLayout
+                        android:id="@+id/iconFrameShare"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/bg_icon_squircle"
+                        android:backgroundTint="#0F2F23"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_share_node"
+                            app:tint="#10B981" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvShareTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp"
+                        android:text="Share to Friends"
+                        android:textColor="@color/lang_text_white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/tvShareSub"
+                        app:layout_constraintEnd_toStartOf="@id/chevronShare"
+                        app:layout_constraintStart_toEndOf="@id/iconFrameShare"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/tvShareSub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Invite friends to try the prank"
+                        android:textColor="@color/lang_text_muted"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/tvShareTitle"
+                        app:layout_constraintStart_toStartOf="@id/tvShareTitle"
+                        app:layout_constraintTop_toBottomOf="@id/tvShareTitle" />
+
+                    <ImageView
+                        android:id="@+id/chevronShare"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ================= LEGAL SECTION ================= -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.08"
+                android:text="Legal"
+                android:textAllCaps="true"
+                android:textColor="@color/lang_text_muted"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutPrivacy"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:background="@drawable/bg_settings_card"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:id="@+id/iconFramePrivacy"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/bg_icon_squircle"
+                    android:backgroundTint="#242C3D"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_shield_privacy"
+                        app:tint="#64748B" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvPrivacyTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:text="Privacy Policy"
+                    android:textColor="@color/lang_text_white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/tvPrivacySub"
+                    app:layout_constraintEnd_toStartOf="@id/imgExternal"
+                    app:layout_constraintStart_toEndOf="@id/iconFramePrivacy"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tvPrivacySub"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="How we handle your data"
+                    android:textColor="@color/lang_text_muted"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/tvPrivacyTitle"
+                    app:layout_constraintStart_toStartOf="@id/tvPrivacyTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvPrivacyTitle" />
+
+                <ImageView
+                    android:id="@+id/imgExternal"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_chevron_right"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- 3. Bottom Premium Trivia Ad Banner Container matching mockup exactly -->
+    <!--    <com.google.android.material.card.MaterialCardView-->
+    <!--        android:id="@+id/adCard"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="100dp"-->
+    <!--        android:layout_margin="16dp"-->
+    <!--        app:cardBackgroundColor="#0D1E36"-->
+    <!--        app:cardCornerRadius="16dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:strokeColor="#1E3E6B"-->
+    <!--        app:strokeWidth="1dp">-->
+
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:background="@drawable/bg_tech_quiz_banner">-->
+
+    <!--            &lt;!&ndash; AD indicator tag badge &ndash;&gt;-->
+    <!--            <TextView-->
+    <!--                android:id="@+id/tvAdTag"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:background="#018FFB"-->
+    <!--                android:paddingHorizontal="8dp"-->
+    <!--                android:paddingVertical="2dp"-->
+    <!--                android:text="AD"-->
+    <!--                android:textColor="@color/lang_text_white"-->
+    <!--                android:textSize="10sp"-->
+    <!--                android:textStyle="bold"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <ImageView-->
+    <!--                android:id="@+id/imgAdApp"-->
+    <!--                android:layout_width="64dp"-->
+    <!--                android:layout_height="64dp"-->
+    <!--                android:layout_marginStart="12dp"-->
+    <!--                android:scaleType="centerCrop"-->
+    <!--                android:src="@drawable/placeholder_trivia_banner"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tvAdTitle"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginStart="12dp"-->
+    <!--                android:layout_marginEnd="8dp"-->
+    <!--                android:text="QUIZ TRIVIA"-->
+    <!--                android:textColor="@color/lang_text_white"-->
+    <!--                android:textSize="14sp"-->
+    <!--                android:textStyle="bold"-->
+    <!--                app:layout_constraintBottom_toTopOf="@id/tvAdSubtitle"-->
+    <!--                app:layout_constraintEnd_toStartOf="@id/btnAdPlay"-->
+    <!--                app:layout_constraintStart_toEndOf="@id/imgAdApp"-->
+    <!--                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                app:layout_constraintVertical_chainStyle="packed" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tvAdSubtitle"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="2dp"-->
+    <!--                android:text="Tricky Riddles - PLAY NOW!"-->
+    <!--                android:textColor="#93C5FD"-->
+    <!--                android:textSize="12sp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toStartOf="@id/btnAdPlay"-->
+    <!--                app:layout_constraintStart_toStartOf="@id/tvAdTitle"-->
+    <!--                app:layout_constraintTop_toBottomOf="@id/tvAdTitle" />-->
+
+    <!--            <com.google.android.material.button.MaterialButton-->
+    <!--                android:id="@+id/btnAdPlay"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="36dp"-->
+    <!--                android:layout_marginEnd="12dp"-->
+    <!--                android:backgroundTint="#018FFB"-->
+    <!--                android:text="PLAY NOW"-->
+    <!--                android:textColor="@color/lang_text_white"-->
+    <!--                android:textSize="11sp"-->
+    <!--                app:cornerRadius="18dp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--    </com.google.android.material.card.MaterialCardView>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

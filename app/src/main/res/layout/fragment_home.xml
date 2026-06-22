@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/lang_bg_dark">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_24sdp">
+
+        <!-- 1. Custom Action Bar Header -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/actionHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_54sdp"
+            android:paddingHorizontal="@dimen/_16sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvAppLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FakeBroken"
+                android:textColor="@color/lang_text_white"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btnQuickWidget"
+                android:layout_width="@dimen/_34sdp"
+                android:layout_height="@dimen/_34sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_grid_menu"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnSettings"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btnSettings"
+                android:layout_width="@dimen/_34sdp"
+                android:layout_height="@dimen/_34sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_settings"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 2. Start Prank Hero Card -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeroCard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_260sdp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/bg_start_prank_card"
+            app:layout_constraintTop_toBottomOf="@id/actionHeader">
+
+            <!-- Hero graphic layer overlay -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:scaleType="centerCrop"
+                android:src="@drawable/home_pagebroken" />
+
+            <!-- 🌟 15-Year Developer Touch: Guideline to prevent any overlap on different screen sizes -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glHeroText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.50641024" />
+
+            <TextView
+                android:id="@+id/tvHeroTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:text="Broken Screen"
+                android:textColor="@color/lang_text_white"
+                android:textSize="@dimen/_22ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/glHeroText" />
+
+            <TextView
+                android:id="@+id/tvHeroDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:lineHeight="20dp"
+                android:text="Prank your friends with realistic screen cracks and damage effects."
+                android:textColor="@color/lang_text_muted"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toEndOf="@id/tvHeroTitle"
+                app:layout_constraintStart_toStartOf="@id/tvHeroTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvHeroTitle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStartPrank"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_marginBottom="@dimen/_18sdp"
+                android:background="@drawable/bg_start_prank_btn"
+                android:text="Start Prank"
+                android:textColor="@color/lang_text_white"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_play_arrow"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/_6sdp"
+                app:iconTint="@color/lang_text_white"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/tvHeroTitle"
+                app:layout_constraintStart_toStartOf="@id/tvHeroTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 3. Quick Actions Grid Layout -->
+        <TextView
+            android:id="@+id/tvQuickActionsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_22sdp"
+            android:text="⚡  Quick Actions"
+            android:textColor="@color/lang_text_white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clHeroCard" />
+
+        <GridLayout
+            android:id="@+id/glQuickActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:columnCount="2"
+            android:rowCount="2"
+            app:layout_constraintTop_toBottomOf="@id/tvQuickActionsTitle">
+
+            <!-- Card 1: Spider Crack -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnActionSpider"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_72sdp"
+                android:layout_columnWeight="1"
+                android:layout_margin="@dimen/_4sdp"
+                android:background="@drawable/bg_quick_action_card"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/emojiSpider"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:src="@drawable/ic_spider_crack"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:text="Spider Crack"
+                    android:textColor="@color/lang_text_white"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/emojiSpider"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Card 2: Touch Effects -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnActionTouch"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_72sdp"
+                android:layout_columnWeight="1"
+                android:layout_margin="@dimen/_4sdp"
+                android:background="@drawable/bg_quick_action_card"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/emojiTouch"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:src="@drawable/ic_touch_effect"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:text="Touch Effects"
+                    android:textColor="@color/lang_text_white"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/emojiTouch"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Card 3: Bullet Effects -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnActionBullet"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_72sdp"
+                android:layout_columnWeight="1"
+                android:layout_margin="@dimen/_4sdp"
+                android:background="@drawable/bg_quick_action_card"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/emojiBullet"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:src="@drawable/ic_bullet_effect"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:text="Bullet Effects"
+                    android:textColor="@color/lang_text_white"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/emojiBullet"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Card 4: LED Effects -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnActionLed"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_72sdp"
+                android:layout_columnWeight="1"
+                android:layout_margin="@dimen/_4sdp"
+                android:background="@drawable/bg_quick_action_card"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/emojiLed"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:src="@drawable/ic_led_effect"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:text="LED Effects"
+                    android:textColor="@color/lang_text_white"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/emojiLed"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </GridLayout>
+
+        <!-- 4. Popular Effects Horizontal Row -->
+        <TextView
+            android:id="@+id/tvPopularTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_22sdp"
+            android:text="Popular Effects"
+            android:textColor="@color/lang_text_white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/glQuickActions" />
+
+        <TextView
+            android:id="@+id/btnSeeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:text="See All"
+            android:textColor="@color/lang_cyan_glow"
+            android:textSize="@dimen/_11ssp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toBottomOf="@id/tvPopularTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvPopularTitle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPopularEffects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvPopularTitle"
+            tools:listitem="@layout/item_popular_effect" />
+
+        <!-- 5. Interactive Bottom AD Trivia Banner -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clAdBanner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_22sdp"
+            android:background="@drawable/bg_tech_quiz_banner"
+            app:layout_constraintTop_toBottomOf="@id/rvPopularEffects">
+
+            <TextView
+                android:id="@+id/adBadge"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:background="#007EF2"
+                android:gravity="center"
+                android:text="AD"
+                android:textColor="@color/lang_text_white"
+                android:textSize="@dimen/_7ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Brain or game controller vector emoji -->
+            <TextView
+                android:id="@+id/adBannerIcon"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:gravity="center"
+                android:text="🧠"
+                android:textSize="@dimen/_26ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAdBannerTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="Play Tech Quiz &amp; Earn"
+                android:textColor="@color/lang_text_white"
+                android:textSize="@dimen/_11ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tvAdBannerSub"
+                app:layout_constraintEnd_toStartOf="@id/btnAdBannerPlay"
+                app:layout_constraintStart_toEndOf="@id/adBannerIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tvAdBannerSub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Earn upto 15,000 coins"
+                android:textColor="#38BDF8"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnAdBannerPlay"
+                app:layout_constraintStart_toStartOf="@id/tvAdBannerTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvAdBannerTitle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdBannerPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_26sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:backgroundTint="#00C2FF"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Play Now"
+                android:textAllCaps="false"
+                android:textColor="@color/lang_bg_dark"
+                android:textSize="@dimen/_9ssp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

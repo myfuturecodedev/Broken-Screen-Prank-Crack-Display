@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Glowing circular checkbox verification symbol centered in vibrant cyan -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Circle Base -->
+    <path
+        android:fillColor="#10254C"
+        android:strokeColor="#00C2FF"
+        android:strokeWidth="1.5"
+        android:pathData="M12,12m-9,0a9,9 0,1 1,18 0a9,9 0,1 1,-18 0" />
+    <!-- Check Tick mark -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#00C2FF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M8,12l3,3l5,-6" />
+</vector>

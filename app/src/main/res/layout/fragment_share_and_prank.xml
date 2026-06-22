@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lang_bg_dark"
+    android:fillViewport="true"
+    tools:context=".ui.afterlogin.ShareAndPrankFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp">
+
+        <!-- 1. Header Toolbar Navigation -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headerToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Go Back"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/lang_text_white" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Share &amp; Prank"
+                android:textColor="@color/lang_text_white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnBack"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 2. Feature Promo Banner Block -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvPromoContainer"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:layout_constraintTop_toBottomOf="@id/headerToolbar"
+            app:strokeWidth="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- grayscaled background image mimicking your mockup illustration -->
+                <ImageView
+                    android:id="@+id/ivPromoBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.85"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder_trivia_banner" />
+
+
+                <!-- Screaming / scared floating emojis overlayed cleanly -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="😱"
+                    android:textSize="28sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="🤯"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="😂"
+                    android:textSize="26sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 3. Dynamic Text Header Block -->
+        <TextView
+            android:id="@+id/tvHeadingTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Give Your Friends a\nLittle Scare 😱"
+            android:textColor="@color/lang_text_white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvPromoContainer" />
+
+        <TextView
+            android:id="@+id/tvHeadingSub"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Share the app and surprise your friends\nwith realistic broken screen prank effects."
+            android:textColor="@color/lang_text_muted"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeadingTitle" />
+
+        <!-- 4. Scanning Segment (Scan & Install Glow Card) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clScanContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_qr_glowing_card"
+            android:padding="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tvHeadingSub">
+
+            <TextView
+                android:id="@+id/tvScanLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.08"
+                android:text="SCAN &amp; INSTALL"
+                android:textColor="@color/lang_text_white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvScanDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="Friends can scan this code to instantly download\nthe prank app."
+                android:textColor="@color/lang_text_muted"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvScanLabel" />
+
+            <!-- Core high definition QR vector illustration -->
+            <ImageView
+                android:id="@+id/ivQrImage"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_qr_code_placeholder"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvScanDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 5. Main Action Triggers (Share Link & Copy Link Buttons) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShareLink"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_next_btn"
+            android:text="Share Link"
+            android:textAllCaps="false"
+            android:textColor="@color/lang_text_white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/clScanContainer" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCopyLink"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_dark_action_btn"
+            android:text="Copy Link"
+            android:textAllCaps="false"
+            android:textColor="@color/lang_text_white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/btnShareLink" />
+
+        <!-- 6. Social Platforms Sharing Bar -->
+        <LinearLayout
+            android:id="@+id/llSocialLinks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnCopyLink">
+
+            <!-- WhatsApp -->
+            <ImageView
+                android:id="@+id/btnShareWhatsapp"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/bg_social_share_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="13dp"
+                android:src="@drawable/ic_whatsapp" />
+
+            <!-- Messenger -->
+            <ImageView
+                android:id="@+id/btnShareMessenger"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/bg_social_share_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="13dp"
+                android:src="@drawable/ic_messenger" />
+
+            <!-- Telegram -->
+            <ImageView
+                android:id="@+id/btnShareTelegram"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/bg_social_share_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="13dp"
+                android:src="@drawable/ic_telegram" />
+
+            <!-- Instagram -->
+            <ImageView
+                android:id="@+id/btnShareInstagram"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/bg_social_share_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="13dp"
+                android:src="@drawable/ic_instagram" />
+
+        </LinearLayout>
+
+        <!-- 7. Why Share Details Container Card -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clWhyShareContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_why_share_card"
+            android:padding="20dp"
+            app:layout_constraintTop_toBottomOf="@id/llSocialLinks">
+
+            <ImageView
+                android:id="@+id/ivWhyIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_lightning"
+                app:layout_constraintBottom_toBottomOf="@id/tvWhyTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvWhyTitle" />
+
+            <TextView
+                android:id="@+id/tvWhyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Why Share?"
+                android:textColor="@color/lang_text_white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/ivWhyIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Checkpoint 1: Easy QR download -->
+            <ImageView
+                android:id="@+id/ivCheck1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_checkbox_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvWhyTitle" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Easy QR download"
+                android:textColor="@color/lang_text_white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheck1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivCheck1"
+                app:layout_constraintTop_toTopOf="@id/ivCheck1" />
+
+            <!-- Checkpoint 2: Realistic crack effects -->
+            <ImageView
+                android:id="@+id/ivCheck2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_checkbox_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCheck1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Realistic crack effects"
+                android:textColor="@color/lang_text_white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheck2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivCheck2"
+                app:layout_constraintTop_toTopOf="@id/ivCheck2" />
+
+            <!-- Checkpoint 3: Funny reactions guaranteed -->
+            <ImageView
+                android:id="@+id/ivCheck3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_checkbox_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCheck2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Funny reactions guaranteed"
+                android:textColor="@color/lang_text_white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheck3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivCheck3"
+                app:layout_constraintTop_toTopOf="@id/ivCheck3" />
+
+            <!-- Checkpoint 4: Quick prank setup -->
+            <ImageView
+                android:id="@+id/ivCheck4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_checkbox_circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCheck3" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Quick prank setup"
+                android:textColor="@color/lang_text_white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheck4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivCheck4"
+                app:layout_constraintTop_toTopOf="@id/ivCheck4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+

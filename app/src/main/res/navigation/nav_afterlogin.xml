@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_afterlogin"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.futurecode.crackdisplayprank.ui.afterlogin.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_brokenScreenFragment"
+            app:destination="@id/brokenScreenFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_howToUseFragment"
+            app:destination="@id/howToUseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/brokenScreenFragment"
+        android:name="com.futurecode.crackdisplayprank.ui.afterlogin.BrokenScreenFragment"
+        android:label="fragment_broken_screen"
+        tools:layout="@layout/fragment_broken_screen">
+
+        <!-- Argument 1: PRANK_TYPE defines what category is rendered (SPIDER, BULLET, LED, DEFAULT) -->
+        <argument
+            android:name="PRANK_TYPE"
+            app:argType="string"
+            android:defaultValue="DEFAULT" />
+
+        <!-- Argument 2: PRANK_TITLE dynamically changes the top Actionbar Header text -->
+        <argument
+            android:name="PRANK_TITLE"
+            app:argType="string"
+            android:defaultValue="Broken Screen" />
+
+        <action
+            android:id="@+id/action_brokenScreenFragment_to_brokenScreenPreviewFragment"
+            app:destination="@id/brokenScreenPreviewFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.futurecode.crackdisplayprank.ui.afterlogin.SettingsFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+
+    <fragment
+        android:id="@+id/howToUseFragment"
+        android:name="com.futurecode.crackdisplayprank.ui.afterlogin.HowToUseFragment"
+        android:label="fragment_how_to_use"
+        tools:layout="@layout/fragment_how_to_use" />
+
+    <fragment
+        android:id="@+id/brokenScreenPreviewFragment"
+        android:name="com.futurecode.crackdisplayprank.ui.afterlogin.BrokenScreenPreviewFragment"
+        android:label="fragment_broken_screen_preview"
+        tools:layout="@layout/fragment_broken_screen_preview" />
+
+
+    <action android:id="@+id/action_global_to_brokenScreenPreviewFragment"
+        app:destination="@id/brokenScreenPreviewFragment"/>
+
+    <fragment
+        android:id="@+id/brokenEffectFragment"
+        android:name="com.futurecode.crackdisplayprank.ui.afterlogin.BrokenEffectFragment"
+        android:label="fragment_broken_effect"
+        tools:layout="@layout/fragment_broken_effect" />
+
+    <action android:id="@+id/action_global_to_brokenEffectFragment"
+        app:destination="@id/brokenEffectFragment"/>
+
+
+    <action android:id="@+id/action_global_to_settingFragment"
+        app:destination="@id/settingFragment"/>
+    <fragment
+        android:id="@+id/shareAndPrankFragment"
+        android:name="com.futurecode.crackdisplayprank.ui.afterlogin.ShareAndPrankFragment"
+        android:label="fragment_share_and_prank"
+        tools:layout="@layout/fragment_share_and_prank" />
+
+    <action android:id="@+id/action_global_to_shareAndPrankFragment"
+        app:destination="@id/shareAndPrankFragment"/>
+
+    <fragment
+        android:id="@+id/languageFragment2"
+        android:name="com.futurecode.crackdisplayprank.ui.prelogin.LanguageFragment"
+        android:label="LanguageFragment" />
+
+    <action android:id="@+id/action_global_to_languageFragment2"
+        app:destination="@id/languageFragment2"/>
+
+
+    <action android:id="@+id/action_global_to_howToUseFragment"
+        app:destination="@id/howToUseFragment"/>
+
+</navigation>

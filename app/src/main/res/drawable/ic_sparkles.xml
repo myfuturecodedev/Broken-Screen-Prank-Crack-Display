@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sparkling magic stars themed icon colored in bright lavender/purple -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Star 1 (Main Big Star) -->
+    <path
+        android:fillColor="#A855F7"
+        android:pathData="M9,2l2,5 5,2 -5,2 -2,5 -2,-5 -5,-2 5,-2z" />
+    <!-- Star 2 (Small Sparkle Top Right) -->
+    <path
+        android:fillColor="#C084FC"
+        android:pathData="M19,9l1,2.5 2.5,1 -2.5,1 -1,2.5 -1,-2.5 -2.5,-1 2.5,-1z" />
+    <!-- Star 3 (Tiny Sparkle Bottom Left) -->
+    <path
+        android:fillColor="#C084FC"
+        android:pathData="M18,1l0.8,2 2,0.8 -2,0.8 -0.8,2 -0.8,-2 -2,-0.8 2,-0.8z" />
+</vector>

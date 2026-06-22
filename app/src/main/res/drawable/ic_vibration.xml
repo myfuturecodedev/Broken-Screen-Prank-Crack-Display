@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mobile vibration haptic feedback icon colored in bright electric cyan -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Mobile body structure -->
+    <path
+        android:fillColor="#00C2FF"
+        android:pathData="M17,19a2,2 0,0 1,-2 2L9,21a2,2 0,0 1,-2 -2L7,5a2,2 0,0 1,2 -2h6a2,2 0,0 1,2 2z" />
+    <!-- Vibration waves left side -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M2,8c1,1.5 1,4.5 0,6M4,10c0.5,0.7 0.5,2.3 0,3" />
+    <!-- Vibration waves right side -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M22,8c-1,1.5 -1,4.5 0,6M20,10c-0.5,0.7 -0.5,2.3 0,3" />
+</vector>
