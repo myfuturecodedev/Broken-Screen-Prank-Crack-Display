@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/lang_bg_dark"
+    tools:context=".ui.afterlogin.PreviewScreenFragment">
+
+    <!-- 1. Header Toolbar (Back Navigation + Dynamic Title + Help Button) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Go Back"
+            app:tint="@color/lang_text_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Preview Effect"
+            android:textColor="@color/lang_text_white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnHelpInfo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_help_info"
+            android:contentDescription="Help Tooltip"
+            app:tint="@color/lang_cyan_glow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Guidelines to ensure absolute responsive padding on all device heights -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glTopMargin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glBottomMargin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80" />
+
+    <!-- 2. Centered High-Fidelity Phone Mockup (Uses Aspect Ratio Constraint) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clPhoneMockup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_phone_frame"
+        android:padding="3.5dp"
+        app:layout_constraintDimensionRatio="H,1:2.0"
+        app:layout_constraintTop_toBottomOf="@id/glTopMargin"
+        app:layout_constraintBottom_toTopOf="@id/glBottomMargin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- CardView mask to clip standard wallpaper graphics safely inside modern phone bezel curves -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/lang_card_bg"
+            app:cardMaxElevation="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- Layer 1: Simulated high definition mobile OS wallpaper home screen with icons -->
+                <ImageView
+                    android:id="@+id/ivMockWallpaper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Simulated OS Background" />
+
+                <!-- Layer 2: Seamless glass crack fracture vector graphic overlaid on top -->
+                <ImageView
+                    android:id="@+id/ivMockCrack"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bg_screen_crack_lines"
+                    android:contentDescription="Glass Fracture Layer" />
+
+                <!-- Layer 3: Glass glare gradient finish -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_glare_overlay"
+                    android:alpha="0.10" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 3. Bottom Neon Cyan Slogan Header -->
+    <TextView
+        android:id="@+id/tvFooterSlogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="READY TO FOOL YOUR FRIENDS?"
+        android:textColor="@color/lang_cyan_glow"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.08"
+        app:layout_constraintBottom_toTopOf="@id/llBottomButtons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clPhoneMockup"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <!-- 4. Side-by-Side Twin "Start Prank" Buttons Container -->
+    <LinearLayout
+        android:id="@+id/llBottomButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Button Left: Matte Dark Style with Lightning Icon -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStartPrankDark"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_start_prank_card"
+            android:text="Start Prank"
+            android:textColor="@color/lang_text_white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_lightning"
+            app:iconGravity="textStart"
+            app:iconPadding="6dp"
+            app:iconTint="@color/lang_text_white"
+            app:backgroundTint="@null" />
+
+        <!-- Button Right: Radiant Neon Cyan Gradient Style with Lightning Icon -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStartPrankCyan"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_start_prank_btn"
+            android:text="Start Prank"
+            android:textColor="@color/lang_text_white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_lightning"
+            app:iconGravity="textStart"
+            app:iconPadding="6dp"
+            app:iconTint="@color/lang_text_white"
+            app:backgroundTint="@null" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
