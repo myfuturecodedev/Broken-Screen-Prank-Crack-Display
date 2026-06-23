@@ -33,183 +33,6 @@ import kotlin.math.sqrt
 /**
  * 15-Year Developer Standard: High-fidelity WindowManager service overlay
  * supporting all Android versions up to Android 15 (FGS Special Use compliant).
- */
-//class BrokenScreenService : Service() {
-//
-//    private lateinit var windowManager: WindowManager
-//    private var touchCatcherOverlay: View? = null
-//    private var activeCrackOverlay: View? = null
-//
-//    companion object {
-//        const val EXTRA_BACKGROUND = "EXTRA_BACKGROUND"
-//        const val EXTRA_CRACK = "EXTRA_CRACK"
-//        const val EXTRA_TOUCH_CATCHER = "EXTRA_TOUCH_CATCHER"
-//        const val EXTRA_PREVIEW_MODE = "EXTRA_PREVIEW_MODE"
-//
-//        private const val CHANNEL_ID = "broken_screen_prank_channel"
-//        private const val NOTIFICATION_ID = 4851
-//    }
-//
-//    override fun onBind(intent: Intent?): IBinder? = null
-//
-//    override fun onCreate() {
-//        super.onCreate()
-//        windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
-//        startForeground(NOTIFICATION_ID, createNotification())
-//    }
-//
-//    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-//        if (intent == null) return START_NOT_STICKY
-//
-//        val bgRes = intent.getIntExtra(EXTRA_BACKGROUND, R.drawable.broken_screen_2)
-//        val crackRes = intent.getIntExtra(EXTRA_CRACK, R.drawable.broken_screen_1)
-//        val isTouchCatcher = intent.getBooleanExtra(EXTRA_TOUCH_CATCHER, false)
-//        val isPreview = intent.getBooleanExtra(EXTRA_PREVIEW_MODE, false)
-//
-//        if (isPreview) {
-//            drawFullscreenCrack(bgRes, crackRes)
-//            // Auto close preview after 3.5 seconds
-//            android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
-//                stopSelf()
-//            }, 3500)
-//        } else if (isTouchCatcher) {
-//            setupGlobalTouchCatcher(bgRes, crackRes)
-//        } else {
-//            drawFullscreenCrack(bgRes, crackRes)
-//        }
-//
-//        return START_STICKY
-//    }
-//
-//    /**
-//     * Creates an invisible full-screen touch interceptor window to catch global gestures.
-//     */
-//    private fun setupGlobalTouchCatcher(bgRes: Int, crackRes: Int) {
-//        removeOverlaySafely(touchCatcherOverlay)
-//
-//        val windowType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-//        } else {
-//            @Suppress("DEPRECATION")
-//            WindowManager.LayoutParams.TYPE_PHONE
-//        }
-//
-//        val params = WindowManager.LayoutParams(
-//            WindowManager.LayoutParams.MATCH_PARENT,
-//            WindowManager.LayoutParams.MATCH_PARENT,
-//            windowType,
-//            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-//                    WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or
-//                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
-//            PixelFormat.TRANSLUCENT
-//        ).apply {
-//            gravity = Gravity.TOP or Gravity.START
-//        }
-//
-//        val catcher = View(this)
-//        catcher.setOnTouchListener { _, _ ->
-//            // Trigger overlay break!
-//            removeOverlaySafely(touchCatcherOverlay)
-//            drawFullscreenCrack(bgRes, crackRes)
-//            true
-//        }
-//
-//        try {
-//            windowManager.addView(catcher, params)
-//            touchCatcherOverlay = catcher
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//    }
-//
-//    /**
-//     * Draws the realistic crack system overlay layer over the screen.
-//     */
-//    private fun drawFullscreenCrack(bgRes: Int, crackRes: Int) {
-//        removeOverlaySafely(activeCrackOverlay)
-//
-//        val windowType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-//        } else {
-//            @Suppress("DEPRECATION")
-//            WindowManager.LayoutParams.TYPE_PHONE
-//        }
-//
-//        val params = WindowManager.LayoutParams(
-//            WindowManager.LayoutParams.MATCH_PARENT,
-//            WindowManager.LayoutParams.MATCH_PARENT,
-//            windowType,
-//            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-//                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
-//                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
-//            PixelFormat.TRANSLUCENT
-//        ).apply {
-//            gravity = Gravity.TOP or Gravity.START
-//        }
-//
-//        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//        val view = inflater.inflate(R.layout.layout_overlay_crack, null)
-//
-//        val ivBg = view.findViewById<ImageView>(R.id.ivOverlayBg)
-//        val ivCrack = view.findViewById<ImageView>(R.id.ivOverlayCrack)
-//
-//        ivBg.setImageResource(bgRes)
-//        ivCrack.setImageResource(crackRes)
-//
-//        // Close on tap if in preview, otherwise keep active to protect prank gameplay
-//        view.setOnClickListener {
-//            stopSelf()
-//        }
-//
-//        try {
-//            windowManager.addView(view, params)
-//            activeCrackOverlay = view
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//    }
-//
-//    private fun removeOverlaySafely(view: View?) {
-//        view?.let {
-//            try {
-//                windowManager.removeView(it)
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//            }
-//        }
-//    }
-//
-//    private fun createNotification(): Notification {
-//        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            val channel = NotificationChannel(
-//                CHANNEL_ID,
-//                "Prank Service Notification",
-//                NotificationManager.IMPORTANCE_LOW
-//            )
-//            manager.createNotificationChannel(channel)
-//        }
-//
-//        return NotificationCompat.Builder(this, CHANNEL_ID)
-//            .setContentTitle("Prank Engine Active")
-//            .setContentText("Tap overlay to cancel active crack effect.")
-//            .setSmallIcon(R.mipmap.ic_launcher)
-//            .setPriority(NotificationCompat.PRIORITY_LOW)
-//            .build()
-//    }
-//
-//    override fun onDestroy() {
-//        removeOverlaySafely(touchCatcherOverlay)
-//        removeOverlaySafely(activeCrackOverlay)
-//        super.onDestroy()
-//    }
-//}
-
-
-
-/**
- * 15-Year Developer Standard: High-fidelity WindowManager service overlay
- * supporting all Android versions up to Android 15 (FGS Special Use compliant).
  * Supports global invisible touch catcher, hardware shake sensor, and background timers.
  */
 class BrokenScreenService : Service(), SensorEventListener {
@@ -386,7 +209,7 @@ class BrokenScreenService : Service(), SensorEventListener {
     /**
      * Draws the realistic crack system overlay layer over the screen.
      */
-    private fun drawFullscreenCrack(bgRes: Int, crackRes: Int) {
+    private fun drawFullscreenCrack(bgRes: Int, crackRes: Int, isPreviewMode: Boolean = false) {
         if (activeCrackOverlay != null) return
 
         val windowType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -396,17 +219,31 @@ class BrokenScreenService : Service(), SensorEventListener {
             WindowManager.LayoutParams.TYPE_PHONE
         }
 
+        // 🌟 YAHAN FLAGS DEFINE KARTE WAQT ISE ADD KARNA HAI:
+        val windowFlags = if (isPreviewMode) {
+            // Preview mode me normal touch check karne ke liye tap options open rahenge
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+        } else {
+            // Real Prank Mode me hum "FLAG_NOT_TOUCHABLE" lagayenge
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE or // <--- YAHAN YE ACCENT FLAGGING ADD HOGI!
+                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+        }
+
+        // WindowManager parameters me is windowFlags ko pass karenge
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.MATCH_PARENT,
             windowType,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+            windowFlags, // <--- Yahan variables dynamic update honge
             PixelFormat.TRANSLUCENT
         ).apply {
             gravity = Gravity.TOP or Gravity.START
         }
+
+
 
         val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.layout_overlay_crack, null)
@@ -418,9 +255,9 @@ class BrokenScreenService : Service(), SensorEventListener {
         ivCrack.setImageResource(crackRes)
 
         // Close on tap to let users terminate the active prank easily
-        view.setOnClickListener {
-            stopSelf()
-        }
+//        view.setOnClickListener {
+//            stopSelf()
+//        }
 
         try {
             windowManager.addView(view, params)
@@ -502,6 +339,12 @@ class BrokenScreenService : Service(), SensorEventListener {
             .build()
     }
 
+    override fun onTaskRemoved(rootIntent: Intent?) {
+        // 🌟 Jab user background (Recent Apps panel) se app ko swipe-out (kill) karega,
+        // tab ye function automatically execute hoga aur humari service ko stop kar dega.
+        stopSelf()
+        super.onTaskRemoved(rootIntent)
+    }
     override fun onDestroy() {
         cleanAllBackgroundTriggers()
         removeOverlaySafely(activeCrackOverlay)

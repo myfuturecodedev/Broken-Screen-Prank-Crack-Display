@@ -458,6 +458,7 @@ class BrokenScreenPreviewFragment : Fragment() {
 
     private fun setupCarouselRecyclerView() {
         carouselAdapter = CarouselPreviewAdapter(carouselList) { position ->
+
             binding.rvView.smoothScrollToPosition(position)
         }
 

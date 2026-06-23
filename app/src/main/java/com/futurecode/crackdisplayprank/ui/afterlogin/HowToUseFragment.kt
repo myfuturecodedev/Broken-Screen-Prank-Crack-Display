@@ -8,17 +8,12 @@ import com.futurecode.crackdisplayprank.databinding.FragmentHowToUseBinding
 
 class HowToUseFragment : BaseFragment<FragmentHowToUseBinding>(FragmentHowToUseBinding::inflate) {
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
 //        binding.btnBack.setOnClickListener {
 //            findNavController().popBackStack()
 //        }
-
-
-
 
 
     }
