@@ -61,12 +61,14 @@ class SettingsFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBin
 
         // 6. Share Prank with Friends Action
         binding.layoutShareRow.setOnClickListener {
-            val shareText = "Hey! Check out this awesome Broken Screen Prank app! Shatter your phone screen realistically. Download now: https://play.google.com/store/apps/details?id=${requireContext().packageName}"
-            val intent = Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, shareText)
-            }
-            startActivity(Intent.createChooser(intent, "Share Prank via"))
+//            val shareText = "Hey! Check out this awesome Broken Screen Prank app! Shatter your phone screen realistically. Download now: https://play.google.com/store/apps/details?id=${requireContext().packageName}"
+//            val intent = Intent(Intent.ACTION_SEND).apply {
+//                type = "text/plain"
+//                putExtra(Intent.EXTRA_TEXT, shareText)
+//            }
+//            startActivity(Intent.createChooser(intent, "Share Prank via"))
+
+            findNavController().navigate(R.id.action_global_to_shareAndPrankFragment)
         }
 
         // 7. Privacy Policy Browser Navigation

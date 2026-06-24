@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shake"
+                android:text="@string/shake"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -40,7 +40,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shake device to trigger the prank."
+                android:text="@string/shake_device_to_trigger_the_prank"
                 android:textColor="#9AA4B2"
                 android:textSize="13sp"/>
         </LinearLayout>

@@ -9,51 +9,21 @@
         android:id="@+id/clPhoneBezel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/bg_phone_frame"
         android:padding="3dp"
         app:layout_constraintDimensionRatio="H,1:2.0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <androidx.cardview.widget.CardView
+        <ImageView
+            android:id="@+id/ivHomeWallpaper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardBackgroundColor="@color/lang_card_bg"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            app:cardMaxElevation="0dp">
+            android:contentDescription="Mock OS Screen Background"
+            android:scaleType="centerCrop"
+            android:src="@drawable/broken_screen_1" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <!-- Layer 1: Simulated Home Wallpaper (OLED desktop background/lines/glitch) -->
-                <ImageView
-                    android:id="@+id/ivHomeWallpaper"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="Mock OS Screen Background"
-                    android:scaleType="centerCrop" />
-
-                <!-- Layer 2: Transparent Glass Crack/Shatter/Overlay -->
-                <ImageView
-                    android:id="@+id/ivCrackOverlay"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="Glass Damage Overlay"
-                    android:scaleType="fitXY" />
-
-                <!-- Optional Gloss Layer: Subtle glare gradient reflecting premium hardware feel -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:alpha="0.08" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

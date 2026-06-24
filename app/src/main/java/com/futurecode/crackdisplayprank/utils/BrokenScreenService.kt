@@ -22,6 +22,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.media.MediaPlayer
 import android.os.Handler
 import android.os.Looper
 import android.os.VibrationEffect
@@ -34,6 +35,8 @@ import kotlin.math.sqrt
  * 15-Year Developer Standard: High-fidelity WindowManager service overlay
  * supporting all Android versions up to Android 15 (FGS Special Use compliant).
  * Supports global invisible touch catcher, hardware shake sensor, and background timers.
+ * * ✅ UPDATED FEATURE: Plays dynamic R.raw.sound_broken audio effect safely
+ * right before displaying the screen crack overlay to maximize impact!
  */
 class BrokenScreenService : Service(), SensorEventListener {
 
@@ -91,7 +94,8 @@ class BrokenScreenService : Service(), SensorEventListener {
 
         when {
             isPreview -> {
-                drawFullscreenCrack(selectedBgRes, selectedCrackRes)
+                // ✅ FIXED: Explicitly pass isPreviewMode = true for preview actions
+                drawFullscreenCrack(selectedBgRes, selectedCrackRes, isPreviewMode = true)
                 // Auto close preview mode after 3.5 seconds
                 backgroundHandler.postDelayed({
                     stopSelf()
@@ -110,7 +114,7 @@ class BrokenScreenService : Service(), SensorEventListener {
             else -> {
                 // Instantly draw crack if no specific trigger state is passed
                 triggerDeviceVibration()
-                drawFullscreenCrack(selectedBgRes, selectedCrackRes)
+                drawFullscreenCrack(selectedBgRes, selectedCrackRes, isPreviewMode = false)
             }
         }
 
@@ -147,7 +151,7 @@ class BrokenScreenService : Service(), SensorEventListener {
         catcher.setOnTouchListener { _, _ ->
             // Trigger crack overlay break!
             triggerDeviceVibration()
-            drawFullscreenCrack(bgRes, crackRes)
+            drawFullscreenCrack(bgRes, crackRes, isPreviewMode = false)
 
             // Instantly clean up the invisible touch layer so the victim can see the crack underneath
             cleanTouchCatcher()
@@ -189,7 +193,7 @@ class BrokenScreenService : Service(), SensorEventListener {
             // Unregister sensor first to avoid duplicate fires
             cleanSensorDetector()
             triggerDeviceVibration()
-            drawFullscreenCrack(selectedBgRes, selectedCrackRes)
+            drawFullscreenCrack(selectedBgRes, selectedCrackRes, isPreviewMode = false)
         }
     }
 
@@ -201,9 +205,25 @@ class BrokenScreenService : Service(), SensorEventListener {
     private fun setupBackgroundTimer(delayMillis: Long) {
         timerRunnable = Runnable {
             triggerDeviceVibration()
-            drawFullscreenCrack(selectedBgRes, selectedCrackRes)
+            drawFullscreenCrack(selectedBgRes, selectedCrackRes, isPreviewMode = false)
         }
         backgroundHandler.postDelayed(timerRunnable!!, delayMillis)
+    }
+
+    /**
+     * ✅ HELPER METHOD: Safely plays the broken screen audio effect from raw resources.
+     * Prevents memory leaks by auto-releasing the MediaPlayer instance after playback.
+     */
+    private fun playCrackSound() {
+        try {
+            val mediaPlayer = MediaPlayer.create(this, R.raw.sound_broken)
+            mediaPlayer?.setOnCompletionListener { mp ->
+                mp.release() // Clean up player memory
+            }
+            mediaPlayer?.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     /**
@@ -212,6 +232,9 @@ class BrokenScreenService : Service(), SensorEventListener {
     private fun drawFullscreenCrack(bgRes: Int, crackRes: Int, isPreviewMode: Boolean = false) {
         if (activeCrackOverlay != null) return
 
+        // 🌟 Play the broken screen audio sound right before displaying overlay
+        playCrackSound()
+
         val windowType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
@@ -219,31 +242,28 @@ class BrokenScreenService : Service(), SensorEventListener {
             WindowManager.LayoutParams.TYPE_PHONE
         }
 
-        // 🌟 YAHAN FLAGS DEFINE KARTE WAQT ISE ADD KARNA HAI:
+        // Window flag configurations
         val windowFlags = if (isPreviewMode) {
-            // Preview mode me normal touch check karne ke liye tap options open rahenge
+            // Preview mode allows normal touch checking options
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
                     WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
                     WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
         } else {
-            // Real Prank Mode me hum "FLAG_NOT_TOUCHABLE" lagayenge
+            // Real Prank Mode forces NOT_TOUCHABLE so it stays permanent
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE or // <--- YAHAN YE ACCENT FLAGGING ADD HOGI!
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE or
                     WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
         }
 
-        // WindowManager parameters me is windowFlags ko pass karenge
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.MATCH_PARENT,
             windowType,
-            windowFlags, // <--- Yahan variables dynamic update honge
+            windowFlags,
             PixelFormat.TRANSLUCENT
         ).apply {
             gravity = Gravity.TOP or Gravity.START
         }
-
-
 
         val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.layout_overlay_crack, null)
@@ -254,10 +274,12 @@ class BrokenScreenService : Service(), SensorEventListener {
         ivBg.setImageResource(bgRes)
         ivCrack.setImageResource(crackRes)
 
-        // Close on tap to let users terminate the active prank easily
-//        view.setOnClickListener {
-//            stopSelf()
-//        }
+        // Only preview mode allows close-on-tap
+        if (isPreviewMode) {
+            view.setOnClickListener {
+                stopSelf()
+            }
+        }
 
         try {
             windowManager.addView(view, params)
@@ -333,18 +355,18 @@ class BrokenScreenService : Service(), SensorEventListener {
 
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Prank Engine Active")
-            .setContentText("Tap overlay or open notification to cancel effect.")
+            .setContentText("Close app completely or stop service to remove crack overlay.")
             .setSmallIcon(R.mipmap.ic_launcher)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .build()
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
-        // 🌟 Jab user background (Recent Apps panel) se app ko swipe-out (kill) karega,
-        // tab ye function automatically execute hoga aur humari service ko stop kar dega.
+        // Stop service when app is swiped away from recent apps panel
         stopSelf()
         super.onTaskRemoved(rootIntent)
     }
+
     override fun onDestroy() {
         cleanAllBackgroundTriggers()
         removeOverlaySafely(activeCrackOverlay)

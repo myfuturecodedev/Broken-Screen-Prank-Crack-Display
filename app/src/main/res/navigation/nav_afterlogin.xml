@@ -99,13 +99,41 @@
     <action android:id="@+id/action_global_to_howToUseFragment"
         app:destination="@id/howToUseFragment"/>
 
+    <action android:id="@+id/action_global_to_previewScreenFragment"
+        app:destination="@id/previewScreenFragment"/>
+
+
     <fragment
         android:id="@+id/previewScreenFragment"
         android:name="com.futurecode.crackdisplayprank.ui.afterlogin.PreviewScreenFragment"
         android:label="fragment_preview_screen"
-        tools:layout="@layout/fragment_preview_screen" />
+        tools:layout="@layout/fragment_preview_screen" >
 
-    <action android:id="@+id/action_global_to_previewScreenFragment"
-        app:destination="@id/previewScreenFragment"/>
+        <!-- Argument 1: PRANK_TYPE defines what category is rendered (SPIDER, BULLET, LED, DEFAULT) -->
+        <argument
+            android:name="PRANK_TYPE"
+            app:argType="string"
+            android:defaultValue="DEFAULT" />
+
+        <!-- Argument 2: PRANK_TITLE dynamically changes the top Actionbar Header text -->
+        <argument
+            android:name="PRANK_TITLE"
+            app:argType="string"
+            android:defaultValue="Broken Screen" />
+
+        <!-- ✅ FIXED: Changed argType to "integer" and defaultValue to a valid integer resource -->
+        <argument
+            android:name="IMAGE"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+        <!-- ✅ FIXED: Changed argType to "integer" and defaultValue to a valid integer resource -->
+        <argument
+            android:name="CRACK"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+
+    </fragment>
 
 </navigation>

@@ -21,7 +21,7 @@
 
     <View
         android:layout_width="2dp"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:background="@color/cyan"
         app:layout_constraintStart_toStartOf="@id/tvStep03"
         app:layout_constraintEnd_toEndOf="@id/tvStep03"
@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trigger Prank"
+                android:text="@string/trigger_prank"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"/>
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Return to the home screen and perform the action to activate."
+                android:text="@string/return_to_the_home_screen_and_perform_the_action_to_activate"
                 android:textColor="@color/text_secondary"/>
 
             <ImageView

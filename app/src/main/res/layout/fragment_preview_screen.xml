@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/lang_bg_dark"
     tools:context=".ui.afterlogin.PreviewScreenFragment">
 
-    <!-- 1. Header Toolbar (Back Navigation + Dynamic Title + Help Button) -->
+    <!-- 1. Header Toolbar (Back button, dynamic title & help info) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerToolbar"
         android:layout_width="match_parent"
@@ -33,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Preview Effect"
+            android:text="@string/preview_effect"
             android:textColor="@color/lang_text_white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -56,35 +57,39 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Guidelines to ensure absolute responsive padding on all device heights -->
+    <!-- STREAMING_CHUNK:Structuring layout guidelines for phone mockup... -->
+    <!-- Symmetrical height guidelines that prevent clipping on extra tall/short screens -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glTopMargin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glBottomMargin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.80" />
+        app:layout_constraintGuide_percent="0.78" />
 
-    <!-- 2. Centered High-Fidelity Phone Mockup (Uses Aspect Ratio Constraint) -->
+    <!-- STREAMING_CHUNK:Configuring phone mockup card mask... -->
+    <!-- 2. Centered High-Fidelity Phone Mockup (Responsive & Aspect-Ratio Safe) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clPhoneMockup"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/bg_phone_frame"
         android:padding="3.5dp"
-        app:layout_constraintDimensionRatio="H,1:2.0"
+        app:layout_constraintWidth_max="300dp"
+        app:layout_constraintHeight_max="600dp"
+        app:layout_constraintDimensionRatio="1:2"
         app:layout_constraintTop_toBottomOf="@id/glTopMargin"
         app:layout_constraintBottom_toTopOf="@id/glBottomMargin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- CardView mask to clip standard wallpaper graphics safely inside modern phone bezel curves -->
+        <!-- CardView mask to clip mock home wallpapers inside bezel rounded corners -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -97,41 +102,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <!-- Layer 1: Simulated high definition mobile OS wallpaper home screen with icons -->
+                <!-- Layer 1: Simulated mobile OS desktop wallpaper with grid icons -->
                 <ImageView
                     android:id="@+id/ivMockWallpaper"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
+                    android:src="@drawable/broken_screen_1"
                     android:contentDescription="Simulated OS Background" />
 
-                <!-- Layer 2: Seamless glass crack fracture vector graphic overlaid on top -->
+                <!-- Layer 2: Seamless glass crack fracture vector graphic overlaid -->
                 <ImageView
                     android:id="@+id/ivMockCrack"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/bg_screen_crack_lines"
                     android:contentDescription="Glass Fracture Layer" />
 
-                <!-- Layer 3: Glass glare gradient finish -->
+                <!-- Layer 3: Diagonal glossy reflection glare effect -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gradient_glare_overlay"
                     android:alpha="0.10" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 3. Bottom Neon Cyan Slogan Header -->
+    <!-- STREAMING_CHUNK:Designing call-to-action buttons... -->
+    <!-- 3. Bottom Neon Cyan Slogan Label -->
     <TextView
         android:id="@+id/tvFooterSlogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="READY TO FOOL YOUR FRIENDS?"
+        android:text="@string/ready_to_fool_your_friends"
         android:textColor="@color/lang_cyan_glow"
         android:textSize="13sp"
         android:textStyle="bold"
@@ -140,9 +144,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/clPhoneMockup"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.5" />
 
-    <!-- 4. Side-by-Side Twin "Start Prank" Buttons Container -->
+    <!-- 4. Twin "Start Prank" Buttons Container (Responsive horizontal flow) -->
     <LinearLayout
         android:id="@+id/llBottomButtons"
         android:layout_width="match_parent"
@@ -153,15 +157,15 @@
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- Button Left: Matte Dark Style with Lightning Icon -->
+        <!-- Button Left: Premium Matte Slate Card style with Lightning Icon -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStartPrankDark"
+            android:id="@+id/btnGoBack"
             android:layout_width="0dp"
             android:layout_height="54dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_start_prank_card"
-            android:text="Start Prank"
+            android:text="@string/back"
             android:textColor="@color/lang_text_white"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -172,7 +176,7 @@
             app:iconTint="@color/lang_text_white"
             app:backgroundTint="@null" />
 
-        <!-- Button Right: Radiant Neon Cyan Gradient Style with Lightning Icon -->
+        <!-- Button Right: Glowing Neon Cyan Gradient style with Lightning Icon -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStartPrankCyan"
             android:layout_width="0dp"
@@ -180,7 +184,7 @@
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:background="@drawable/bg_start_prank_btn"
-            android:text="Start Prank"
+            android:text="@string/start_prank"
             android:textColor="@color/lang_text_white"
             android:textSize="15sp"
             android:textStyle="bold"

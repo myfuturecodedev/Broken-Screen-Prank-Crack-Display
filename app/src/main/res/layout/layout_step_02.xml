@@ -13,7 +13,7 @@
         android:layout_marginStart="20dp"
         android:background="@drawable/timeline_step_circle"
         android:gravity="center"
-        android:text="02"
+        android:text="@string/_02"
         android:textColor="@color/cyan"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Configure Trigger"
+                android:text="@string/configure_trigger"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"/>
@@ -56,14 +56,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Choose how the prank should start."
+                android:text="@string/choose_how_the_prank_should_start"
                 android:textColor="@color/text_secondary"/>
 
-            <LinearLayout
+            <HorizontalScrollView
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
+                android:padding="@dimen/_2sdp"
+                android:layout_marginHorizontal="@dimen/_1sdp"
                 android:orientation="horizontal">
 
                 <include layout="@layout/item_trigger_touch"/>
@@ -74,12 +82,23 @@
 
             </LinearLayout>
 
+            </HorizontalScrollView>
+
+
+
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShareLink"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="20dp"
-                android:text="Start Prank"
-                android:textAllCaps="false"/>
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_next_btn"
+                app:backgroundTint="@null"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/share_link"
+                android:textColor="@color/lang_text_white"
+                android:textAllCaps="false"
+                android:textSize="16sp"/>
 
         </LinearLayout>
 

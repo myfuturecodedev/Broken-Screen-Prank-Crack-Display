@@ -25,7 +25,7 @@
                 android:id="@+id/tvAppLogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FakeBroken"
+                android:text="@string/fakebroken"
                 android:textColor="@color/lang_text_white"
                 android:textSize="@dimen/_18ssp"
                 android:textStyle="bold"
@@ -62,62 +62,67 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clHeroCard"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_260sdp"
+            android:layout_height="@dimen/_240sdp"
             android:layout_marginHorizontal="@dimen/_14sdp"
             android:layout_marginTop="@dimen/_8sdp"
-            android:background="@drawable/bg_start_prank_card"
             app:layout_constraintTop_toBottomOf="@id/actionHeader">
 
             <!-- Hero graphic layer overlay -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.5"
                 android:scaleType="centerCrop"
-                android:src="@drawable/home_pagebroken" />
+                android:src="@drawable/home_back" />
 
-            <!-- 🌟 15-Year Developer Touch: Guideline to prevent any overlap on different screen sizes -->
+            <!-- Guideline to prevent any overlap on different screen sizes -->
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/glHeroText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.50641024" />
+                app:layout_constraintGuide_percent="0.45" />
 
+            <!-- Title: Root anchor for the vertical packed constraint chain -->
             <TextView
                 android:id="@+id/tvHeroTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:text="Broken Screen"
+                android:text="@string/broken_screen"
                 android:textColor="@color/lang_text_white"
                 android:textSize="@dimen/_22ssp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/glHeroText" />
+                app:layout_constraintTop_toTopOf="@id/glHeroText"
+                app:layout_constraintBottom_toTopOf="@id/tvHeroDescription"
+                app:layout_constraintVertical_chainStyle="packed" />
 
+            <!-- Description: Connected vertically in-between Title and Button -->
             <TextView
                 android:id="@+id/tvHeroDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:lineHeight="20dp"
-                android:text="Prank your friends with realistic screen cracks and damage effects."
-                android:textColor="@color/lang_text_muted"
+                android:text="@string/prank_your_friends_with_realistic_screen_cracks_and_damage_effects"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_11ssp"
                 app:layout_constraintEnd_toEndOf="@id/tvHeroTitle"
                 app:layout_constraintStart_toStartOf="@id/tvHeroTitle"
-                app:layout_constraintTop_toBottomOf="@id/tvHeroTitle" />
+                app:layout_constraintTop_toBottomOf="@id/tvHeroTitle"
+                app:layout_constraintBottom_toTopOf="@id/btnStartPrank" />
 
+            <!-- Start Button: Constrained to description and parent bottom boundaries -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStartPrank"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_38sdp"
-                android:layout_marginBottom="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
                 android:background="@drawable/bg_start_prank_btn"
-                android:text="Start Prank"
+                android:text="@string/start_prank"
                 android:textColor="@color/lang_text_white"
                 android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
@@ -127,25 +132,27 @@
                 app:iconPadding="@dimen/_6sdp"
                 app:iconTint="@color/lang_text_white"
                 app:backgroundTint="@null"
+                app:layout_constraintTop_toBottomOf="@id/tvHeroDescription"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/tvHeroTitle"
                 app:layout_constraintStart_toStartOf="@id/tvHeroTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- 3. Quick Actions Grid Layout -->
+        <!-- 3. Quick Actions Grid Section -->
         <TextView
             android:id="@+id/tvQuickActionsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_14sdp"
             android:layout_marginTop="@dimen/_22sdp"
-            android:text="⚡  Quick Actions"
+            android:text="@string/quick_actions"
             android:textColor="@color/lang_text_white"
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clHeroCard" />
+
 
         <GridLayout
             android:id="@+id/glQuickActions"
@@ -161,36 +168,45 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnActionSpider"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_72sdp"
+                android:layout_height="@dimen/_86sdp"
                 android:layout_columnWeight="1"
                 android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/bg_quick_action_card"
                 android:clickable="true"
                 android:focusable="true">
 
-                <ImageView
-                    android:id="@+id/emojiSpider"
-                    android:layout_width="@dimen/_28sdp"
-                    android:layout_height="@dimen/_28sdp"
+                <!-- Squircle Icon Background -->
+                <FrameLayout
+                    android:id="@+id/flIconSpider"
+                    android:layout_width="@dimen/_36sdp"
+                    android:layout_height="@dimen/_36sdp"
                     android:layout_marginStart="@dimen/_12sdp"
-                    android:src="@drawable/ic_spider_crack"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@drawable/bg_icon_squircle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/emojiSpider"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_spider_crack" />
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:text="Spider Crack"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:text="@string/spider_crack"
                     android:textColor="@color/lang_text_white"
                     android:textSize="@dimen/_11ssp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/emojiSpider"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/flIconSpider"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -198,36 +214,45 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnActionTouch"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_72sdp"
+                android:layout_height="@dimen/_86sdp"
                 android:layout_columnWeight="1"
                 android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/bg_quick_action_card"
                 android:clickable="true"
                 android:focusable="true">
 
-                <ImageView
-                    android:id="@+id/emojiTouch"
-                    android:layout_width="@dimen/_28sdp"
-                    android:layout_height="@dimen/_28sdp"
+                <!-- Squircle Icon Background -->
+                <FrameLayout
+                    android:id="@+id/flIconTouch"
+                    android:layout_width="@dimen/_36sdp"
+                    android:layout_height="@dimen/_36sdp"
                     android:layout_marginStart="@dimen/_12sdp"
-                    android:src="@drawable/ic_touch_effect"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@drawable/bg_icon_squircle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/emojiTouch"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_touch_effect" />
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:text="Touch Effects"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:text="@string/touch_effects"
                     android:textColor="@color/lang_text_white"
                     android:textSize="@dimen/_11ssp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/emojiTouch"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/flIconTouch"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -235,36 +260,45 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnActionBullet"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_72sdp"
+                android:layout_height="@dimen/_86sdp"
                 android:layout_columnWeight="1"
                 android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/bg_quick_action_card"
                 android:clickable="true"
                 android:focusable="true">
 
-                <ImageView
-                    android:id="@+id/emojiBullet"
-                    android:layout_width="@dimen/_28sdp"
-                    android:layout_height="@dimen/_28sdp"
+                <!-- Squircle Icon Background -->
+                <FrameLayout
+                    android:id="@+id/flIconBullet"
+                    android:layout_width="@dimen/_36sdp"
+                    android:layout_height="@dimen/_36sdp"
                     android:layout_marginStart="@dimen/_12sdp"
-                    android:src="@drawable/ic_bullet_effect"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@drawable/bg_icon_squircle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/emojiBullet"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_bullet_effect" />
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:text="Bullet Effects"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:text="@string/bullet_effects"
                     android:textColor="@color/lang_text_white"
                     android:textSize="@dimen/_11ssp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/emojiBullet"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/flIconBullet"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -272,49 +306,58 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnActionLed"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_72sdp"
+                android:layout_height="@dimen/_86sdp"
                 android:layout_columnWeight="1"
                 android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/bg_quick_action_card"
                 android:clickable="true"
                 android:focusable="true">
 
-                <ImageView
-                    android:id="@+id/emojiLed"
-                    android:layout_width="@dimen/_28sdp"
-                    android:layout_height="@dimen/_28sdp"
+                <!-- Squircle Icon Background -->
+                <FrameLayout
+                    android:id="@+id/flIconLed"
+                    android:layout_width="@dimen/_36sdp"
+                    android:layout_height="@dimen/_36sdp"
                     android:layout_marginStart="@dimen/_12sdp"
-                    android:src="@drawable/ic_led_effect"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@drawable/bg_icon_squircle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/emojiLed"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_led_effect" />
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:text="LED Effects"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:text="@string/led_effects"
                     android:textColor="@color/lang_text_white"
                     android:textSize="@dimen/_11ssp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/emojiLed"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/flIconLed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </GridLayout>
 
-        <!-- 4. Popular Effects Horizontal Row -->
+        <!-- 4. Popular Effects Title Header -->
         <TextView
             android:id="@+id/tvPopularTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_14sdp"
             android:layout_marginTop="@dimen/_22sdp"
-            android:text="Popular Effects"
+            android:text="@string/popular_effects"
             android:textColor="@color/lang_text_white"
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
@@ -326,13 +369,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_14sdp"
-            android:text="See All"
+            android:text="@string/see_all"
             android:textColor="@color/lang_cyan_glow"
-            android:textSize="@dimen/_11ssp"
+            android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
             app:layout_constraintBottom_toBottomOf="@id/tvPopularTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvPopularTitle" />
@@ -349,89 +389,89 @@
             tools:listitem="@layout/item_popular_effect" />
 
         <!-- 5. Interactive Bottom AD Trivia Banner -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clAdBanner"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_60sdp"
-            android:layout_marginHorizontal="@dimen/_14sdp"
-            android:layout_marginTop="@dimen/_22sdp"
-            android:background="@drawable/bg_tech_quiz_banner"
-            app:layout_constraintTop_toBottomOf="@id/rvPopularEffects">
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/clAdBanner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/_60sdp"-->
+<!--            android:layout_marginHorizontal="@dimen/_14sdp"-->
+<!--            android:layout_marginTop="@dimen/_22sdp"-->
+<!--            android:background="@drawable/bg_tech_quiz_banner"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/rvPopularEffects">-->
 
-            <TextView
-                android:id="@+id/adBadge"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_12sdp"
-                android:background="#007EF2"
-                android:gravity="center"
-                android:text="AD"
-                android:textColor="@color/lang_text_white"
-                android:textSize="@dimen/_7ssp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <TextView-->
+<!--                android:id="@+id/adBadge"-->
+<!--                android:layout_width="@dimen/_20sdp"-->
+<!--                android:layout_height="@dimen/_12sdp"-->
+<!--                android:background="#007EF2"-->
+<!--                android:gravity="center"-->
+<!--                android:text="@string/ad"-->
+<!--                android:textColor="@color/lang_text_white"-->
+<!--                android:textSize="@dimen/_7ssp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-            <!-- Brain or game controller vector emoji -->
-            <TextView
-                android:id="@+id/adBannerIcon"
-                android:layout_width="@dimen/_36sdp"
-                android:layout_height="@dimen/_36sdp"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:gravity="center"
-                android:text="🧠"
-                android:textSize="@dimen/_26ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <TextView-->
+<!--                android:id="@+id/adBannerIcon"-->
+<!--                android:layout_width="@dimen/_36sdp"-->
+<!--                android:layout_height="@dimen/_36sdp"-->
+<!--                android:layout_marginStart="@dimen/_12sdp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="🧠"-->
+<!--                android:textSize="@dimen/_26ssp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-            <TextView
-                android:id="@+id/tvAdBannerTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:text="Play Tech Quiz &amp; Earn"
-                android:textColor="@color/lang_text_white"
-                android:textSize="@dimen/_11ssp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/tvAdBannerSub"
-                app:layout_constraintEnd_toStartOf="@id/btnAdBannerPlay"
-                app:layout_constraintStart_toEndOf="@id/adBannerIcon"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvAdBannerTitle"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/_10sdp"-->
+<!--                android:layout_marginEnd="@dimen/_8sdp"-->
+<!--                android:text="Play Tech Quiz &amp; Earn"-->
+<!--                android:textColor="@color/lang_text_white"-->
+<!--                android:textSize="@dimen/_11ssp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintBottom_toTopOf="@id/tvAdBannerSub"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/btnAdBannerPlay"-->
+<!--                app:layout_constraintStart_toEndOf="@id/adBannerIcon"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_chainStyle="packed" />-->
 
-            <TextView
-                android:id="@+id/tvAdBannerSub"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Earn upto 15,000 coins"
-                android:textColor="#38BDF8"
-                android:textSize="@dimen/_9ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btnAdBannerPlay"
-                app:layout_constraintStart_toStartOf="@id/tvAdBannerTitle"
-                app:layout_constraintTop_toBottomOf="@id/tvAdBannerTitle" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvAdBannerSub"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Earn upto 15,000 coins"-->
+<!--                android:textColor="#38BDF8"-->
+<!--                android:textSize="@dimen/_9ssp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/btnAdBannerPlay"-->
+<!--                app:layout_constraintStart_toStartOf="@id/tvAdBannerTitle"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvAdBannerTitle" />-->
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAdBannerPlay"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_26sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
-                android:backgroundTint="#00C2FF"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:text="Play Now"
-                android:textAllCaps="false"
-                android:textColor="@color/lang_bg_dark"
-                android:textSize="@dimen/_9ssp"
-                android:textStyle="bold"
-                app:cornerRadius="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/btnAdBannerPlay"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="@dimen/_26sdp"-->
+<!--                android:layout_marginEnd="@dimen/_12sdp"-->
+<!--                android:backgroundTint="#00C2FF"-->
+<!--                android:insetTop="0dp"-->
+<!--                android:insetBottom="0dp"-->
+<!--                android:text="Play Now"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/lang_bg_dark"-->
+<!--                android:textSize="@dimen/_9ssp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:cornerRadius="16dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
+

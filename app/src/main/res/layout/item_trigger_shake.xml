@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="SHAKE"
+            android:text="@string/shake"
             android:textColor="#B8C1CC"
             android:textSize="11sp"
             android:textStyle="bold"/>

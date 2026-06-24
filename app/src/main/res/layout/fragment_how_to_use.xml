@@ -11,7 +11,9 @@
         android:orientation="vertical"
         android:paddingBottom="24dp">
 
-        <include layout="@layout/layout_how_it_works_toolbar" />
+        <include
+            android:id="@+id/topBar"
+            layout="@layout/layout_how_it_works_toolbar" />
 
         <include layout="@layout/layout_step_01" />
 
@@ -22,14 +24,19 @@
         <include layout="@layout/layout_step_04" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnGotIt"
+            android:id="@+id/btnShareLink"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
+            android:background="@drawable/bg_next_btn_round"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:text="Got it, Let's Go!"
             android:textAllCaps="false"
-            android:textSize="18sp" />
+            android:textColor="@color/lang_text_white"
+            android:textSize="16sp"
+            app:backgroundTint="@null" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Settings"
+            android:text="@string/settings"
             android:textColor="@color/lang_text_white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -63,7 +63,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:letterSpacing="0.08"
-                android:text="Help &amp; Usage"
+                android:text="@string/help_amp_usage"
                 android:textAllCaps="true"
                 android:textColor="@color/lang_text_muted"
                 android:textSize="12sp"
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="14dp"
-                    android:text="How to use the effect"
+                    android:text="@string/how_to_use_the_effect"
                     android:textColor="@color/lang_text_white"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -117,7 +117,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Learn how to activate prank effects"
+                    android:text="@string/learn_how_to_activate_prank_effects"
                     android:textColor="@color/lang_text_muted"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -144,7 +144,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:letterSpacing="0.08"
-                android:text="Effect Preferences"
+                android:text="@string/effect_preferences"
                 android:textAllCaps="true"
                 android:textColor="@color/lang_text_muted"
                 android:textSize="12sp"
@@ -187,7 +187,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="14dp"
                         android:layout_marginEnd="14dp"
-                        android:text="Vibrate on break"
+                        android:text="@string/vibrate_on_break"
                         android:textColor="@color/lang_text_white"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -202,25 +202,13 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Haptic feedback for realistic impact"
+                        android:text="@string/haptic_feedback_for_realistic_impact"
                         android:textColor="@color/lang_text_muted"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@id/tvVibrateTitle"
                         app:layout_constraintStart_toStartOf="@id/tvVibrateTitle"
                         app:layout_constraintTop_toBottomOf="@id/tvVibrateTitle" />
-
-
-                    <!--                    <com.google.android.material.use.material3.MaterialSwitch-->
-                    <!--                        android:id="@+id/switchVibrate"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_marginEnd="16dp"-->
-                    <!--                        app:thumbTint="@color/switch_thumb_selector"-->
-                    <!--                        app:trackTint="@color/switch_track_selector"-->
-                    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-                    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
-                    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
 
 
                     <com.google.android.material.materialswitch.MaterialSwitch
@@ -279,7 +267,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="14dp"
                         android:layout_marginEnd="14dp"
-                        android:text="Change Language"
+                        android:text="@string/change_language"
                         android:textColor="@color/lang_text_white"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -294,7 +282,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="English (US)"
+                        android:text="@string/english_us"
                         android:textColor="@color/lang_text_muted"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -323,7 +311,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:letterSpacing="0.08"
-                android:text="Support &amp; Feedback"
+                android:text="@string/support_amp_feedback"
                 android:textAllCaps="true"
                 android:textColor="@color/lang_text_muted"
                 android:textSize="12sp"
@@ -368,7 +356,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="14dp"
                         android:layout_marginEnd="14dp"
-                        android:text="Rate App"
+                        android:text="@string/rate_app"
                         android:textColor="@color/lang_text_white"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -383,7 +371,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Share your experience with us"
+                        android:text="@string/share_your_experience_with_us"
                         android:textColor="@color/lang_text_muted"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -446,7 +434,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="14dp"
                         android:layout_marginEnd="14dp"
-                        android:text="Share to Friends"
+                        android:text="@string/share_to_friends"
                         android:textColor="@color/lang_text_white"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -461,7 +449,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Invite friends to try the prank"
+                        android:text="@string/invite_friends_to_try_the_prank"
                         android:textColor="@color/lang_text_muted"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -490,7 +478,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:letterSpacing="0.08"
-                android:text="Legal"
+                android:text="@string/legal"
                 android:textAllCaps="true"
                 android:textColor="@color/lang_text_muted"
                 android:textSize="12sp"
@@ -529,7 +517,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="14dp"
-                    android:text="Privacy Policy"
+                    android:text="@string/privacy_policy"
                     android:textColor="@color/lang_text_white"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -544,7 +532,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="How we handle your data"
+                    android:text="@string/how_we_handle_your_data"
                     android:textColor="@color/lang_text_muted"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -566,95 +554,5 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <!-- 3. Bottom Premium Trivia Ad Banner Container matching mockup exactly -->
-    <!--    <com.google.android.material.card.MaterialCardView-->
-    <!--        android:id="@+id/adCard"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="100dp"-->
-    <!--        android:layout_margin="16dp"-->
-    <!--        app:cardBackgroundColor="#0D1E36"-->
-    <!--        app:cardCornerRadius="16dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:strokeColor="#1E3E6B"-->
-    <!--        app:strokeWidth="1dp">-->
-
-    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:background="@drawable/bg_tech_quiz_banner">-->
-
-    <!--            &lt;!&ndash; AD indicator tag badge &ndash;&gt;-->
-    <!--            <TextView-->
-    <!--                android:id="@+id/tvAdTag"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:background="#018FFB"-->
-    <!--                android:paddingHorizontal="8dp"-->
-    <!--                android:paddingVertical="2dp"-->
-    <!--                android:text="AD"-->
-    <!--                android:textColor="@color/lang_text_white"-->
-    <!--                android:textSize="10sp"-->
-    <!--                android:textStyle="bold"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--            <ImageView-->
-    <!--                android:id="@+id/imgAdApp"-->
-    <!--                android:layout_width="64dp"-->
-    <!--                android:layout_height="64dp"-->
-    <!--                android:layout_marginStart="12dp"-->
-    <!--                android:scaleType="centerCrop"-->
-    <!--                android:src="@drawable/placeholder_trivia_banner"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/tvAdTitle"-->
-    <!--                android:layout_width="0dp"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginStart="12dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:text="QUIZ TRIVIA"-->
-    <!--                android:textColor="@color/lang_text_white"-->
-    <!--                android:textSize="14sp"-->
-    <!--                android:textStyle="bold"-->
-    <!--                app:layout_constraintBottom_toTopOf="@id/tvAdSubtitle"-->
-    <!--                app:layout_constraintEnd_toStartOf="@id/btnAdPlay"-->
-    <!--                app:layout_constraintStart_toEndOf="@id/imgAdApp"-->
-    <!--                app:layout_constraintTop_toTopOf="parent"-->
-    <!--                app:layout_constraintVertical_chainStyle="packed" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/tvAdSubtitle"-->
-    <!--                android:layout_width="0dp"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginTop="2dp"-->
-    <!--                android:text="Tricky Riddles - PLAY NOW!"-->
-    <!--                android:textColor="#93C5FD"-->
-    <!--                android:textSize="12sp"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--                app:layout_constraintEnd_toStartOf="@id/btnAdPlay"-->
-    <!--                app:layout_constraintStart_toStartOf="@id/tvAdTitle"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/tvAdTitle" />-->
-
-    <!--            <com.google.android.material.button.MaterialButton-->
-    <!--                android:id="@+id/btnAdPlay"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="36dp"-->
-    <!--                android:layout_marginEnd="12dp"-->
-    <!--                android:backgroundTint="#018FFB"-->
-    <!--                android:text="PLAY NOW"-->
-    <!--                android:textColor="@color/lang_text_white"-->
-    <!--                android:textSize="11sp"-->
-    <!--                app:cornerRadius="18dp"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-    <!--    </com.google.android.material.card.MaterialCardView>-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

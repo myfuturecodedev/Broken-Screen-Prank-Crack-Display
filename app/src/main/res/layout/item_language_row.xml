@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-bold"
-                android:text="English"
+                android:text="@string/english"
                 android:textColor="#0F172A"
                 android:textSize="@dimen/_14ssp" />
 
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:fontFamily="sans-serif"
-                android:text="United States"
+                android:text="@string/united_states"
                 android:textColor="#94A3B8"
                 android:textSize="@dimen/_11ssp" />
         </LinearLayout>

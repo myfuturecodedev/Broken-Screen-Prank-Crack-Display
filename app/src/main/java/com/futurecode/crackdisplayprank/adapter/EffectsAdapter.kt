@@ -26,13 +26,9 @@ class EffectsAdapter(
 
     inner class EffectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivHomeWallpaper: ImageView = itemView.findViewById(R.id.ivHomeWallpaper)
-        private val ivCrackOverlay: ImageView = itemView.findViewById(R.id.ivCrackOverlay)
 
         fun bind(item: EffectItem) {
-            // ✅ CRITICAL FIX: Direct binding of both wallpaper and transparent glass shatter layers dynamically
             ivHomeWallpaper.setImageResource(item.backgroundImageResId)
-            ivCrackOverlay.setImageResource(item.crackImageResId)
-
             itemView.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     onEffectClicked(item)

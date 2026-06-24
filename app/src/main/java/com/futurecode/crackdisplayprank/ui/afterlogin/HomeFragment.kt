@@ -139,15 +139,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             ).show()
         }
 
-        // AD button play trigger
-        binding.btnAdBannerPlay.setOnClickListener {
-            Toast.makeText(requireContext(), "Launching Tech Quiz...", Toast.LENGTH_SHORT).show()
-        }
-
-
         binding.btnSeeAll.setOnClickListener {
             navigateToPrankConfiguration("DEFAULT", "Glass Break")
-
         }
     }
 

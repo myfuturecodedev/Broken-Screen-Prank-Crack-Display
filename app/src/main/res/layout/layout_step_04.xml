@@ -19,6 +19,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <View
+        android:layout_width="2dp"
+        android:layout_height="250dp"
+        android:background="@color/cyan"
+        app:layout_constraintStart_toStartOf="@id/tvStep04"
+        app:layout_constraintEnd_toEndOf="@id/tvStep04"
+        app:layout_constraintTop_toBottomOf="@id/tvStep04"/>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Turn Off Effect"
+                android:text="@string/turn_off_effect"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"/>
@@ -48,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="When you're done pranking:"
+                android:text="@string/when_you_re_done_pranking"
                 android:textColor="@color/text_secondary"/>
 
             <ImageView

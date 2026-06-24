@@ -11,10 +11,10 @@ class HowToUseFragment : BaseFragment<FragmentHowToUseBinding>(FragmentHowToUseB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.btnBack.setOnClickListener {
-//            findNavController().popBackStack()
-//        }
-
+        binding.topBar.ivHelp.visibility= View.GONE
+        binding.topBar.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 }

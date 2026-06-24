@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Premium gradient background with ripple effect on interaction -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#4DFFFFFF">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#007EF2"
+                android:endColor="#00C2FF"
+                android:angle="0" />
+            <corners android:radius="100dp" />
+        </shape>
+    </item>
+</ripple>
