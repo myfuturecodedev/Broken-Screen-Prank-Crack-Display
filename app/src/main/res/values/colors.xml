@@ -58,5 +58,9 @@
     <color name="cyan">#00C8FF</color>
     <color name="line_blue">#00AEEF</color>
     <color name="card_border">#2B3547</color>
+    <color name="switch_thumb_selector">#3A7BD5</color>
+    <color name="switch_track_selector">#00D2FF</color>
+
+
 
 </resources>

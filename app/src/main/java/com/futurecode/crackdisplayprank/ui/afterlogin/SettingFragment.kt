@@ -78,11 +78,9 @@ class SettingsFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBin
             if (isChecked) {
                 // Jab enable (checked) ho, tab explicitly 'true' store hoga
                 prefManager.isVibrationEnabled = true
-                Toast.makeText(requireContext(), "Vibration Enabled", Toast.LENGTH_SHORT).show()
             } else {
                 // Jab disable (unchecked) ho, tab explicitly 'false' store hoga
                 prefManager.isVibrationEnabled = false
-                Toast.makeText(requireContext(), "Vibration Disabled", Toast.LENGTH_SHORT).show()
             }
         }
 

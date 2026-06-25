@@ -17,8 +17,7 @@ object JsonReadUtils {
     fun fetchJsonData(context: Context) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                //val FOLDER_NAME = BuildConfig.APPLICATION_ID
-                val FOLDER_NAME = "com.futurecode.recoverdeletedmessages"
+                val FOLDER_NAME = BuildConfig.APPLICATION_ID
                 val APP_KEY ="MpAEWpiXPcJYuZNcEZXqlXdQWJuEEd"
                 val response = apiService.getJson(FOLDER_NAME, APP_KEY)
                 if (response.isSuccessful){
