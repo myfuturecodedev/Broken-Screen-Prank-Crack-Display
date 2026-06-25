@@ -8,17 +8,27 @@ import androidx.viewpager2.widget.ViewPager2
 import com.futurecode.crackdisplayprank.R
 import com.futurecode.crackdisplayprank.activity.MainActivity
 import com.futurecode.crackdisplayprank.adapter.OnboardingAdapter
+import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
+import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentOnBoardingBinding
 import com.futurecode.crackdisplayprank.model.OnboardingModel
+import com.futurecode.crackdisplayprank.utils.Utils.setAdClickListener
 
 class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>(FragmentOnBoardingBinding::inflate) {
 
     private lateinit var adapter: OnboardingAdapter
     private val onboardingPages = ArrayList<OnboardingModel>()
 
+    private lateinit var nativeAdsHelper: NativeAdsHelper
+    lateinit var fullScreenAdsHelper: FullScreenAdsHelper
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        nativeAdsHelper= NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
 
         initData()
         setupViewPager()
@@ -88,11 +98,11 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>(FragmentOnBoa
     }
 
     private fun setupListeners() {
-        binding.btnSkip.setOnClickListener {
+        binding.btnSkip.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             completeOnboarding()
         }
 
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             val currentPos = binding.viewPagerOnboarding.currentItem
             if (currentPos < onboardingPages.size - 1) {
                 binding.viewPagerOnboarding.setCurrentItem(currentPos + 1, true)

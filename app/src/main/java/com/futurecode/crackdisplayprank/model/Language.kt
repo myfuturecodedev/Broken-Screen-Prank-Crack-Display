@@ -1,23 +1,10 @@
 package com.futurecode.crackdisplayprank.model
 
-
-// Ek single language ka data handle karne ke liye
-//data class LanguageModel(
-//    val code: String,            // Language Code (jaise: "en", "hi", "es")
-//    val nativeName: String,      // Native Name (jaise: "English", "हिन्दी", "Español")
-//    val englishName: String,     // English Name (jaise: "English", "Hindi", "Spanish")
-//    val flagEmoji: String,       // Desh ka Flag (jaise: "🇺🇸", "🇮🇳", "🇪🇸")
-//    val category: String,        // Category Group (jaise: "POPULAR LANGUAGES", "EUROPEAN LANGUAGES")
-//    var isSelected: Boolean = false // Track karne ke liye ki ye selected hai ya nahi (Default: false)
-//)
-//
-//sealed class LanguageListItem {
-//    data class Header(val title: String) : LanguageListItem()
-//    data class LanguageItem(val language: LanguageModel) : LanguageListItem()
-//}
-
-
-
+/**
+ * 15-Year Developer Standard: Pure Immutable Data Model.
+ * Represents a single language locale and coordinates category groupings
+ * for multi-view RecyclerView adapters.
+ */
 data class LanguageModel(
     val code: String,
     val nativeName: String,
@@ -27,8 +14,6 @@ data class LanguageModel(
     var isSelected: Boolean = false
 )
 
-// List helper wrapper classes supporting section grouping in multi-view Adapter
-// ✅ UPDATED: Added 'AdItem' support inside the sealed layout list options
 sealed class LanguageListItem {
     data class Header(val title: String) : LanguageListItem()
     data class LanguageItem(val language: LanguageModel) : LanguageListItem()

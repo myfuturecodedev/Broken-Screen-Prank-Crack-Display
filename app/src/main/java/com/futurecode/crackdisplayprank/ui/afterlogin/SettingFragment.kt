@@ -11,6 +11,7 @@ import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
 import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentSettingBinding
+import com.futurecode.crackdisplayprank.utils.Utils.setAdClickListener
 
 class SettingsFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBinding::inflate) {
     private lateinit var nativeAdsHelper: NativeAdsHelper
@@ -40,19 +41,20 @@ class SettingsFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBin
         }
 
         // 2. Help & Usage Interaction
-        binding.layoutHowTo.setOnClickListener {
+        binding.layoutHowTo.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
           //  Toast.makeText(requireContext(), "Opening Help Instructions...", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_global_to_howToUseFragment)
         }
 
         // 4. Change Language Button
+//        binding.layoutLanguageRow.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.layoutLanguageRow.setOnClickListener {
             // Safe Jetpack navigation back to pre-login language screen context
            findNavController().navigate(R.id.action_global_to_languageFragment2)
         }
 
         // 5. Rate Application Trigger
-        binding.layoutRateRow.setOnClickListener {
+        binding.layoutRateRow.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             val appPackage = requireContext().packageName
             try {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackage")))
@@ -62,12 +64,12 @@ class SettingsFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBin
         }
 
         // 6. Share Prank with Friends Action
-        binding.layoutShareRow.setOnClickListener {
+        binding.layoutShareRow.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             findNavController().navigate(R.id.action_global_to_shareAndPrankFragment)
         }
 
         // 7. Privacy Policy Browser Navigation
-        binding.layoutPrivacy.setOnClickListener {
+        binding.layoutPrivacy.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(prefManager.privacyPolicy ?: "")) // Replace with actual URL
             startActivity(browserIntent)
         }

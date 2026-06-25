@@ -13,6 +13,7 @@ import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
 import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentShareAndPrankBinding
+import com.futurecode.crackdisplayprank.utils.Utils.setAdClickListener
 
 class ShareAndPrankFragment : BaseFragment<FragmentShareAndPrankBinding>(FragmentShareAndPrankBinding::inflate) {
 
@@ -34,7 +35,7 @@ class ShareAndPrankFragment : BaseFragment<FragmentShareAndPrankBinding>(Fragmen
         }
 
         // ✅ FIXED: Implemented dynamic Play Store link copy logic with Toast notification
-        binding.btnCopyLink.setOnClickListener {
+        binding.btnCopyLink.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             try {
                 val appPackage = requireContext().packageName
                 val appLink = "https://play.google.com/store/apps/details?id=$appPackage"
@@ -51,7 +52,7 @@ class ShareAndPrankFragment : BaseFragment<FragmentShareAndPrankBinding>(Fragmen
             }
         }
 
-        binding.btnShareLink.setOnClickListener {
+        binding.btnShareLink.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             val appPackage = requireContext().packageName
             try {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackage")))

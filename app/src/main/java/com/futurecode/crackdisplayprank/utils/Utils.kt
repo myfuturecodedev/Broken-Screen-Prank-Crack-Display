@@ -14,6 +14,7 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.util.DisplayMetrics
+import android.view.View
 import android.view.WindowManager
 import android.widget.NumberPicker
 import android.widget.Toast
@@ -23,6 +24,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.futurecode.crackdisplayprank.R
 import com.futurecode.crackdisplayprank.activity.MyApplication
+import com.futurecode.crackdisplayprank.ads.AdInterface
+import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
 import com.futurecode.crackdisplayprank.model.Promo
 
 import com.google.gson.Gson
@@ -234,23 +237,23 @@ object Utils {
     }
 
 
-//    fun View.setAdClickListener(
-//        activity: Activity,
-//        adsHelper: FullScreenAdsHelper, // Pass the helper here
-//        isShowEveryTime: Boolean = false,
-//        onFinished: () -> Unit
-//    ) {
-//        setOnClickListener {
-//            ProgressBarUtils.showProgressDialog(activity)
-//            // Use the passed helper instead of creating a new one
-//            adsHelper.showInterstitialAds(isShowEveryTime, object : AdInterface {
-//                override fun finished() {
-//                    ProgressBarUtils.hideProgressDialog()
-//                    onFinished()
-//                }
-//            })
-//        }
-//    }
+    fun View.setAdClickListener(
+        activity: Activity,
+        adsHelper: FullScreenAdsHelper, // Pass the helper here
+        isShowEveryTime: Boolean = false,
+        onFinished: () -> Unit
+    ) {
+        setOnClickListener {
+            ProgressBarUtils.showProgressDialog(activity)
+            // Use the passed helper instead of creating a new one
+            adsHelper.showInterstitialAds(isShowEveryTime, object : AdInterface {
+                override fun finished() {
+                    ProgressBarUtils.hideProgressDialog()
+                    onFinished()
+                }
+            })
+        }
+    }
 
 
     fun updateBaseContextLocale(context: Context): Context {

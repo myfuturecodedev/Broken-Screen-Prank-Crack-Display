@@ -12,9 +12,12 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.futurecode.crackdisplayprank.R
+import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
+import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentPreviewScreenBinding
 import com.futurecode.crackdisplayprank.utils.BrokenScreenService
+import com.futurecode.crackdisplayprank.utils.Utils.setAdClickListener
 
 /**
  * 15-Year Developer Standard: Responsive Fullscreen Interactive Preview.
@@ -31,8 +34,14 @@ class PreviewScreenFragment : BaseFragment<FragmentPreviewScreenBinding>(Fragmen
     private var selectedBgRes: Int = R.drawable.broken_screen_2
     private var selectedCrackRes: Int = R.drawable.broken_screen_1
 
+    private lateinit var nativeAdsHelper: NativeAdsHelper
+    lateinit var fullScreenAdsHelper: FullScreenAdsHelper
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        nativeAdsHelper= NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
 
         // 1. Safe extraction with default fallback values to prevent NullPointerExceptions
         prankType = arguments?.getString("PRANK_TYPE") ?: "DEFAULT"
@@ -65,16 +74,16 @@ class PreviewScreenFragment : BaseFragment<FragmentPreviewScreenBinding>(Fragmen
             findNavController().popBackStack()
         }
 
-        binding.btnHelpInfo.setOnClickListener {
+        binding.btnHelpInfo.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             findNavController().navigate(R.id.action_global_to_howToUseFragment)
         }
 
         // Right Start Button (Glowing Radiant Cyan Style)
-        binding.btnStartPrankCyan.setOnClickListener {
+        binding.btnStartPrankCyan.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             launchBackgroundPrankEngine()
         }
 
-        binding.btnGoBack.setOnClickListener {
+        binding.btnGoBack.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             findNavController().popBackStack()
 
         }
@@ -111,11 +120,6 @@ class PreviewScreenFragment : BaseFragment<FragmentPreviewScreenBinding>(Fragmen
             }
         }, 300)
 
-        // Inform user with dynamic armed message matching selected method
-        Toast.makeText(
-            requireContext(),
-            "Touch Trigger Armed! Tap screen to break it.",
-            Toast.LENGTH_SHORT
-        ).show()
+
     }
 }

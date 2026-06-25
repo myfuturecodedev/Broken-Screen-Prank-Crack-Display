@@ -157,7 +157,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/lang_text_white" />
+            app:tint="@color/lang_text_white"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tvHeaderTitle"
@@ -250,22 +251,21 @@
         android:layout_marginTop="16dp"
         android:clipToPadding="false"
         android:paddingHorizontal="16dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintTop_toBottomOf="@id/searchLayout"
-        app:layout_constraintBottom_toTopOf="@+id/native_ads_3" />
-
-    <!-- 4. Dynamic Native Ads Container -->
-    <!-- ✅ FIXED: Constrained properly to the bottom of the RecyclerView and Parent's bottom -->
-    <include
-        android:id="@+id/native_ads_3"
-        layout="@layout/native_ads_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_4sdp"
-        android:layout_marginBottom="@dimen/_4sdp"
+        android:paddingBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/searchLayout" />
+
+    <!-- ✅ FIXED: Constrained properly to the bottom of the RecyclerView and Parent's bottom -->
+<!--    <include-->
+<!--        android:id="@+id/native_ads_3"-->
+<!--        layout="@layout/native_ads_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="@dimen/_12sdp"-->
+<!--        android:layout_marginTop="@dimen/_4sdp"-->
+<!--        android:layout_marginBottom="@dimen/_4sdp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,10 +8,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.futurecode.crackdisplayprank.R
 import com.futurecode.crackdisplayprank.adapter.EffectsAdapter
+import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
+import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentBrokenScreenBinding
 import com.futurecode.crackdisplayprank.model.EffectItem
 import com.futurecode.crackdisplayprank.utils.GridSpacingItemDecoration
+import com.futurecode.crackdisplayprank.utils.Utils.setAdClickListener
 
 /**
  * 15-Year Developer Standard: Filters and displays specific category grids.
@@ -26,6 +29,9 @@ class BrokenScreenFragment : BaseFragment<FragmentBrokenScreenBinding>(FragmentB
     private var prankType: String = ""
     private var prankTitle: String = ""
 
+    private lateinit var nativeAdsHelper: NativeAdsHelper
+    lateinit var fullScreenAdsHelper: FullScreenAdsHelper
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -33,10 +39,21 @@ class BrokenScreenFragment : BaseFragment<FragmentBrokenScreenBinding>(FragmentB
         prankType = arguments?.getString("PRANK_TYPE") ?: "DEFAULT"
         prankTitle = arguments?.getString("PRANK_TITLE") ?: "Broken Screen"
 
+        val title = when (prankType) {
+            "SPIDER" -> getString(R.string.spider_crack)
+            "TOUCH" -> getString(R.string.touch)
+            "BULLET" -> getString(R.string.bullet_effects)
+            "LED" -> getString(R.string.led_effects)
+            else -> getString(R.string.broken_screen)
+        }
+
+        nativeAdsHelper= NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
+
         initEffectsData()
         setupRecyclerView()
         setupListeners()
-        binding.tvHeaderTitle.text = prankTitle
+        binding.tvHeaderTitle.text = title
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
@@ -60,7 +77,6 @@ class BrokenScreenFragment : BaseFragment<FragmentBrokenScreenBinding>(FragmentB
             add(EffectItem("6", R.drawable.broken_screen_6, R.drawable.broken_img6, "SIDE_CRACK"))
             add(EffectItem("7", R.drawable.broken_screen_7, R.drawable.broken_img7, "RAINBOW_GLITCH"))
             add(EffectItem("8", R.drawable.broken_screen_8, R.drawable.broken_img8, "RED_BURN_OVERLAY"))
-            add(EffectItem("9", R.drawable.broken_screen_9, R.drawable.broken_img9, "VERTICAL_STRIPES"))
             add(EffectItem("10", R.drawable.broken_screen_10, R.drawable.broken_img10, "DENSE_GLASS_CRACKS"))
             add(EffectItem("11", R.drawable.broken_screen_11, R.drawable.broken_img11, "HORIZONTAL_LINE_GLITCH"))
             add(EffectItem("12", R.drawable.broken_screen_12, R.drawable.broken_img12, "BULLET_MULTIPLE_SHATTERS"))
@@ -79,34 +95,30 @@ class BrokenScreenFragment : BaseFragment<FragmentBrokenScreenBinding>(FragmentB
             prankType.equals("SPIDER", ignoreCase = true) -> {
 
                 // ✅ FIXED: Directly adding items to 'effectsList' so they display correctly on the UI.
-                effectsList.add(EffectItem("1", R.drawable.broken_screen_1, R.drawable.broken_img1, "SPIDER"))
-                effectsList.add(EffectItem("2", R.drawable.broken_screen_2, R.drawable.broken_img2, "LED_LINES"))
-                effectsList.add(EffectItem("3", R.drawable.broken_screen_3, R.drawable.broken_img3, "RAINBOW_LINES"))
-                effectsList.add(EffectItem("4", R.drawable.broken_screen_4, R.drawable.broken_img4, "BULLET_HOLES"))
-                effectsList.add(EffectItem("5", R.drawable.broken_screen_5, R.drawable.broken_img5, "GLASS_BURST"))
-                effectsList.add(EffectItem("6", R.drawable.broken_screen_6, R.drawable.broken_img6, "SIDE_CRACK"))
                 effectsList.add(EffectItem("7", R.drawable.broken_screen_7, R.drawable.broken_img7, "RAINBOW_GLITCH"))
-                effectsList.add(EffectItem("8", R.drawable.broken_screen_8, R.drawable.broken_img8, "RED_BURN_OVERLAY"))
-
+                effectsList.add(EffectItem("5", R.drawable.broken_screen_5, R.drawable.broken_img5, "GLASS_BURST"))
+                effectsList.add(EffectItem("5", R.drawable.broken_screen_5, R.drawable.broken_img5, "GLASS_BURST"))
+                effectsList.add(EffectItem("3", R.drawable.broken_screen_3, R.drawable.broken_img3, "RAINBOW_LINES"))
+                effectsList.add(EffectItem("9", R.drawable.broken_screen_9, R.drawable.broken_img9, "VERTICAL_STRIPES"))
+                effectsList.add(EffectItem("15", R.drawable.broken_screen_15, R.drawable.broken_img15, "EDGE_SPIDER_WEB"))
+                effectsList.add(EffectItem("19", R.drawable.broken_screen_19, R.drawable.broken_img19, "EDGE_SPIDER_WEB"))
+                effectsList.add(EffectItem("17", R.drawable.broken_screen_17, R.drawable.broken_img17, "EDGE_SPIDER_WEB"))
             }
             prankType.equals("LED", ignoreCase = true) || prankType.equals("LED_LINES", ignoreCase = true) -> {
-                effectsList.add(EffectItem("1", R.drawable.broken_screen_1, R.drawable.broken_img1, "SPIDER"))
+                effectsList.add(EffectItem("17", R.drawable.broken_screen_17, R.drawable.broken_img17, "EDGE_SPIDER_WEB"))
                 effectsList.add(EffectItem("2", R.drawable.broken_screen_2, R.drawable.broken_img2, "LED_LINES"))
                 effectsList.add(EffectItem("3", R.drawable.broken_screen_3, R.drawable.broken_img3, "RAINBOW_LINES"))
-                effectsList.add(EffectItem("4", R.drawable.broken_screen_4, R.drawable.broken_img4, "BULLET_HOLES"))
-                effectsList.add(EffectItem("5", R.drawable.broken_screen_5, R.drawable.broken_img5, "GLASS_BURST"))
-                effectsList.add(EffectItem("6", R.drawable.broken_screen_6, R.drawable.broken_img6, "SIDE_CRACK"))
-                effectsList.add(EffectItem("7", R.drawable.broken_screen_7, R.drawable.broken_img7, "RAINBOW_GLITCH"))
-
+                effectsList.add(EffectItem("8", R.drawable.broken_screen_8, R.drawable.broken_img8, "RED_BURN_OVERLAY"))
+                effectsList.add(EffectItem("12", R.drawable.broken_screen_12, R.drawable.broken_img12, "BULLET_MULTIPLE_SHATTERS"))
+                effectsList.add(EffectItem("14", R.drawable.broken_screen_14, R.drawable.broken_img14, "CENTER_BULLET"))
+                effectsList.add(EffectItem("17", R.drawable.broken_screen_17, R.drawable.broken_img17, "EDGE_SPIDER_WEB"))
             }
             prankType.equals("BULLET", ignoreCase = true) || prankType.equals("BULLET_HOLES", ignoreCase = true) -> {
-
-                effectsList.add(EffectItem("1", R.drawable.broken_screen_1, R.drawable.broken_img1, "SPIDER"))
-                effectsList.add(EffectItem("2", R.drawable.broken_screen_2, R.drawable.broken_img2, "LED_LINES"))
-                effectsList.add(EffectItem("3", R.drawable.broken_screen_3, R.drawable.broken_img3, "RAINBOW_LINES"))
-                effectsList.add(EffectItem("4", R.drawable.broken_screen_4, R.drawable.broken_img4, "BULLET_HOLES"))
                 effectsList.add(EffectItem("5", R.drawable.broken_screen_5, R.drawable.broken_img5, "GLASS_BURST"))
-
+                effectsList.add(EffectItem("3", R.drawable.broken_screen_3, R.drawable.broken_img3, "RAINBOW_LINES"))
+                effectsList.add(EffectItem("17", R.drawable.broken_screen_17, R.drawable.broken_img17, "EDGE_SPIDER_WEB"))
+                effectsList.add(EffectItem("10", R.drawable.broken_screen_10, R.drawable.broken_img10, "DENSE_GLASS_CRACKS"))
+                effectsList.add(EffectItem("13", R.drawable.broken_screen_13, R.drawable.broken_img13, "GREEN_LINE_BURN"))
 
             }
             prankType.equals("TOUCH", ignoreCase = true) || prankType.equals("RAINBOW_GLITCH", ignoreCase = true) -> {
@@ -163,11 +175,11 @@ class BrokenScreenFragment : BaseFragment<FragmentBrokenScreenBinding>(FragmentB
             findNavController().popBackStack()
         }
 
-        binding.btnQuickLayout.setOnClickListener {
+        binding.btnQuickLayout.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             findNavController().navigate(R.id.action_global_to_shareAndPrankFragment)
         }
 
-        binding.btnSettings.setOnClickListener {
+        binding.btnSettings.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             findNavController().navigate(R.id.action_global_to_settingFragment)
         }
     }

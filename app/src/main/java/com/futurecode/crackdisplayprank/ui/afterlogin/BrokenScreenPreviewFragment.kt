@@ -26,6 +26,7 @@ import com.futurecode.crackdisplayprank.databinding.FragmentBrokenScreenPreviewB
 import com.futurecode.crackdisplayprank.model.EffectItem
 import com.futurecode.crackdisplayprank.utils.BrokenScreenService
 import com.futurecode.crackdisplayprank.utils.CarouselLayoutManager
+import com.futurecode.crackdisplayprank.utils.Utils.setAdClickListener
 import com.futurecode.crackdisplayprank.viewModel.PrankConfigViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -50,9 +51,21 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        nativeAdsHelper= NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
+
         // 1. Safe extraction with default fallback values to prevent NullPointerExceptions
         prankType = arguments?.getString("PRANK_TYPE") ?: "DEFAULT"
         prankTitle = arguments?.getString("PRANK_TITLE") ?: "Broken Screen"
+
+        val title = when (prankType) {
+            "SPIDER" -> getString(R.string.spider_crack)
+            "TOUCH" -> getString(R.string.touch)
+            "BULLET" -> getString(R.string.bullet_effects)
+            "LED" -> getString(R.string.led_effects)
+            else -> getString(R.string.broken_screen)
+        }
 
         initCarouselData()
         setupCarouselRecyclerView()
@@ -64,18 +77,12 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
 
         loadNativeAds()
 
+        binding.tvHeaderTitle.text=title
+
     }
 
     private fun initCarouselData() {
         brokenScreenList.clear()
-        // High fidelity asset mapping corresponding to design mockup presets
-//        brokenScreenList.add(EffectItem("1", R.drawable.broken_screen_1, R.drawable.broken_screen_1, "Spider Crack"))
-//        brokenScreenList.add(EffectItem("2", R.drawable.broken_screen_2, R.drawable.broken_screen_1, "LED Green Lines"))
-//        brokenScreenList.add(EffectItem("3", R.drawable.broken_screen_3, R.drawable.broken_screen_1, "Rainbow Glitch"))
-//        brokenScreenList.add(EffectItem("4", R.drawable.broken_screen_1, R.drawable.broken_screen_1, "Bullet Shatter"))
-//        brokenScreenList.add(EffectItem("5", R.drawable.broken_screen_1, R.drawable.broken_screen_1, "OLED Leak"))
-
-
         brokenScreenList.add(EffectItem("1", R.drawable.broken_screen_1, R.drawable.broken_img1, "SPIDER"))
         brokenScreenList.add(EffectItem("2", R.drawable.broken_screen_2, R.drawable.broken_img2, "LED_LINES"))
         brokenScreenList.add(EffectItem("3", R.drawable.broken_screen_3, R.drawable.broken_img3, "RAINBOW_LINES"))
@@ -151,7 +158,7 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
 
             // ✅ 3. Update the header title text with the selected item's category
             if (initialIndex in brokenScreenList.indices) {
-                binding.tvHeaderTitle.text = brokenScreenList[initialIndex].styleCategory
+               // binding.tvHeaderTitle.text = brokenScreenList[initialIndex].styleCategory
             }
         }
 
@@ -165,7 +172,7 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
                     if (centerView != null) {
                         val position = customLayoutManager.getPosition(centerView)
                         if (position in brokenScreenList.indices) {
-                            binding.tvHeaderTitle.text = brokenScreenList[position].styleCategory
+                           // binding.tvHeaderTitle.text = brokenScreenList[position].styleCategory
                             selectedEffectIndex = position
                             viewModel.setSelectedEffect(position)
                         }
@@ -180,7 +187,7 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
             findNavController().popBackStack()
         }
 
-        binding.btnHelpInfo.setOnClickListener {
+        binding.btnHelpInfo.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             findNavController().navigate(R.id.action_global_to_howToUseFragment)
         }
 
@@ -218,6 +225,29 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
             // Launch safe foreground task delegation
             startBackgroundPrankService()
         }
+
+
+        // ✅ FIXED: setAdClickListener Integration with correct qualified return labels
+//        binding.btnStartPrank.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
+//            // Draw Overlays system permission verification
+//            if (!Settings.canDrawOverlays(requireContext())) {
+//                startActivity(
+//                    Intent(
+//                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+//                        Uri.parse("package:${requireContext().packageName}")
+//                    )
+//                )
+//                return@setAdClickListener // ✅ CORRECTED: Label matches function signature scope
+//            }
+//
+//            if (selectedMethod == "TIMER" && selectedDelay == "OFF") {
+//                Toast.makeText(requireContext(), "Please select a timer delay first!", Toast.LENGTH_SHORT).show()
+//                return@setAdClickListener // ✅ CORRECTED: Label matches function signature scope
+//            }
+//
+//            // Launch safe foreground task delegation
+//            startBackgroundPrankService()
+//        }
     }
 
     private fun startBackgroundPrankService() {

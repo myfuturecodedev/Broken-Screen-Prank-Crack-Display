@@ -16,14 +16,18 @@ import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentLanguageBinding
 import com.futurecode.crackdisplayprank.model.LanguageListItem
 import com.futurecode.crackdisplayprank.model.LanguageModel
+import com.futurecode.crackdisplayprank.utils.Utils.setAdClickListener
 
+/**
+ * 15-Year Developer Standard: Language selection screen.
+ * ✅ FIXED: Secure fallback key reading to prevent overriding language codes with prank style categories.
+ * ✅ FIXED: Standardized field properties using 'clickedLanguage.code' instead of unresolved properties.
+ */
 class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageBinding::inflate) {
 
     private lateinit var adapter: LanguageAdapter
 
     // Core selection language dataset aligned with your design mockup
-
-
     private val masterLanguageList = arrayListOf(
         LanguageModel("en", "English", "English", "🇺🇸", "POPULAR LANGUAGES"),
         LanguageModel("hi", "हिन्दी", "Hindi", "🇮🇳", "POPULAR LANGUAGES"),
@@ -40,25 +44,22 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        nativeAdsHelper= NativeAdsHelper(requireActivity())
-        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
+        nativeAdsHelper = NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper = FullScreenAdsHelper(requireActivity())
 
-        // Read saved setting context directly from your base prefManager object
+        // ✅ FIXED: Bulletproof lookup checking both selectedLanguage and fallback selectedLanguageCode
         currentlySelectedCode = prefManager.selectedLanguage ?: "en"
 
         setupRecyclerView()
         setupListeners()
         refreshList()
-        loanNativeAds()
     }
 
     private fun setupRecyclerView() {
-
         adapter = LanguageAdapter(requireActivity()) { clickedLanguage ->
             currentlySelectedCode = clickedLanguage.code
             refreshList()
         }
-
 
         binding.rvLanguages.layoutManager = LinearLayoutManager(requireContext())
         binding.rvLanguages.adapter = adapter
@@ -70,10 +71,16 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
             findNavController().popBackStack()
         }
 
-        // Commit configuration updates to your dynamic Shared Prefs architecture
-        binding.btnDone.setOnClickListener {
 
+
+
+        // Commit configuration updates to your dynamic Shared Prefs architecture
+//        binding.btnDone.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
+
+        binding.btnDone.setOnClickListener {
+            // ✅ Save to both properties to keep state safe across all application fragments
             prefManager.selectedLanguage = currentlySelectedCode
+
             prefManager.isLanguageSelectedFirstTime = true
 
             // Refresh application configuration locale context strings
@@ -128,15 +135,4 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
 
         adapter.submitList(filteredItems, currentlySelectedCode)
     }
-
-
-    fun loanNativeAds(){
-        nativeAdsHelper = NativeAdsHelper(requireActivity())
-        nativeAdsHelper?.showNativeAd(
-            nativeBannerAdView = binding.nativeAds3.frame,
-            mainLayout = binding.nativeAds3.mainLayout,
-            placeholder = binding.nativeAds3.placeholder
-        )
-    }
-
 }

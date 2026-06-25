@@ -18,6 +18,7 @@ import com.futurecode.crackdisplayprank.databinding.FragmentHomeBinding
 import com.futurecode.crackdisplayprank.model.PopularEffect
 import com.futurecode.crackdisplayprank.notification.NotificationPermissionHelper
 import com.futurecode.crackdisplayprank.utils.OverlayPermissionHelper
+import com.futurecode.crackdisplayprank.utils.Utils.setAdClickListener
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
@@ -30,8 +31,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        nativeAdsHelper= NativeAdsHelper(requireActivity())
-        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
+        nativeAdsHelper = NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper = FullScreenAdsHelper(requireActivity())
 
         setupAppLogoHeader()
         initMockData()
@@ -42,6 +43,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         Log.d("WARecoveryFragment", "gcgjff$packageName")
         notificationPermissionHelper.checkAndRequestPermission(isRefresh = isScreenRefreshed)
         isScreenRefreshed = true
+
+
+        Log.d("TAG", "gasfdhgtsdfhgsfDHGASd: ${prefManager.isVibrationEnabled}")
 
     }
 
@@ -96,15 +100,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun setupListeners() {
         // Hero start prank click routing
+//        binding.btnStartPrank.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.btnStartPrank.setOnClickListener {
             navigateToPrankConfiguration("DEFAULT", "Glass Break")
         }
 
         // Quick Actions Grid Routing
+//        binding.btnActionSpider.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.btnActionSpider.setOnClickListener {
             navigateToPrankConfiguration("SPIDER", "Spider Crack")
         }
 
+//        binding.btnActionTouch.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.btnActionTouch.setOnClickListener {
             //navigateToPrankConfiguration("TOUCH", "Touch Spark")
             if (OverlayPermissionHelper.hasPermission(requireContext())) {
@@ -114,10 +121,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
         }
 
+//        binding.btnActionBullet.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.btnActionBullet.setOnClickListener {
             navigateToPrankConfiguration("BULLET", "Bullet Glass Damage")
         }
 
+//        binding.btnActionLed.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.btnActionLed.setOnClickListener {
             if (OverlayPermissionHelper.hasPermission(requireContext())) {
                 navigateToPrankConfiguration("LED", "Screen LED Glow")
@@ -127,33 +136,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
 
         // Action Toolbar Triggers
+//        binding.btnSettings.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.btnSettings.setOnClickListener {
-            // Safe Jetpack navigation sequence directly to settings screen
-            // findNavController().navigate(R.id.action_homeFragment_to_settingsFragment)
-            //Toast.makeText(requireContext(), "Opening Settings...", Toast.LENGTH_SHORT).show()
+
             findNavController().navigate(R.id.action_global_to_settingFragment)
         }
 
+//        binding.btnQuickWidget.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.btnQuickWidget.setOnClickListener {
-            // Toast.makeText(requireContext(), "Opening Screen Widgets Panel...", Toast.LENGTH_SHORT).show()
-            // findNavController().navigate(R.id.action_global_to_brokenScreenPreviewFragment)
+
             findNavController().navigate(R.id.action_global_to_shareAndPrankFragment)
         }
 
 
-
+//        binding.btnSeeAll.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.btnSeeAll.setOnClickListener {
-//            Toast.makeText(
-//                requireContext(),
-//                "Viewing All Premium Effects Collection",
-//                Toast.LENGTH_SHORT
-//            ).show()
 
             navigateToPrankConfiguration("DEFAULT", "Glass Break")
 
-
         }
 
+//        binding.btnSeeAll.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
         binding.btnSeeAll.setOnClickListener {
             navigateToPrankConfiguration("DEFAULT", "Glass Break")
         }
@@ -172,7 +175,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         //Toast.makeText(requireContext(), "Launching config details for: $title", Toast.LENGTH_SHORT).show()
     }
 
-    fun loanNativeAds(){
+    fun loanNativeAds() {
         nativeAdsHelper = NativeAdsHelper(requireActivity())
         nativeAdsHelper?.showNativeAd(
             nativeBannerAdView = binding.nativeAds3.frame,
