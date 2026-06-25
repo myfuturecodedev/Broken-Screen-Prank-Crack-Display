@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.futurecode.crackdisplayprank.R
 import com.futurecode.crackdisplayprank.adapter.CarouselPreviewAdapter
+import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
+import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentBrokenScreenPreviewBinding
 import com.futurecode.crackdisplayprank.model.EffectItem
@@ -42,6 +44,10 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
     private var prankType: String = ""
     private var prankTitle: String = ""
 
+    private lateinit var nativeAdsHelper: NativeAdsHelper
+    lateinit var fullScreenAdsHelper: FullScreenAdsHelper
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // 1. Safe extraction with default fallback values to prevent NullPointerExceptions
@@ -52,6 +58,12 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
         setupCarouselRecyclerView()
         setupClickListeners()
         observeViewModelStates()
+
+        nativeAdsHelper= NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
+
+        loadNativeAds()
+
     }
 
     private fun initCarouselData() {
@@ -343,6 +355,15 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
         timerViews.forEach { view ->
             view.setBackgroundResource(R.drawable.bg_timer_tag_unselected)
         }
+    }
+
+    fun loadNativeAds(){
+        nativeAdsHelper = NativeAdsHelper(requireActivity())
+        nativeAdsHelper?.showNativeAd(
+            nativeBannerAdView = binding.nativeAds3.frame,
+            mainLayout = binding.nativeAds3.mainLayout,
+            placeholder = binding.nativeAds3.placeholder
+        )
     }
 
     override fun onDestroyView() {

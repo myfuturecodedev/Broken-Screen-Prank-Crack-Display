@@ -31,9 +31,9 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>(FragmentOnBoa
         // Page 1 Setup
         onboardingPages.add(
             OnboardingModel(
-                titleLine1 = "Prank People",
-                titleLine2 = "Around You",
-                description = "Create realistic broken screen effects and surprise your friends with hilarious reactions.",
+                titleLine1 = getString(R.string.prank_people),
+                titleLine2 = getString(R.string.around_you),
+                description = getString(R.string.create_realistic_broken_screen_effects_and_surprise_your_friends_with_hilarious_reactions),
                 illustrationResId = R.drawable.onboard_back, // Place your PNG vectors here
                 crackBgResId = R.drawable.onboard_one // Background glass spider web lines
             )
@@ -42,9 +42,9 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>(FragmentOnBoa
         // Page 2 Setup
         onboardingPages.add(
             OnboardingModel(
-                titleLine1 = "Realistic Broken",
-                titleLine2 = "Screen Effect",
-                description = "Enjoy sharp crack visuals and glass damage effects that look real enough to prank your friends.",
+                titleLine1 = getString(R.string.realistic_broken),
+                titleLine2 = getString(R.string.screen_effect),
+                description = getString(R.string.enjoy_sharp_crack_visuals_and_glass_damage_effects_that_look_real_enough_to_prank_your_friends),
                 illustrationResId = R.drawable.onboard_two,
                 crackBgResId = R.drawable.onboard_two
             )
@@ -53,9 +53,9 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>(FragmentOnBoa
         // Page 3 Setup
         onboardingPages.add(
             OnboardingModel(
-                titleLine1 = "Everyone Thinks Your",
-                titleLine2 = "Phone Is Broken",
-                description = "Make your screen look cracked for real and watch people react like your phone is actually damaged.",
+                titleLine1 = getString(R.string.everyone_thinks_your),
+                titleLine2 = getString(R.string.phone_is_broken),
+                description = getString(R.string.make_your_screen_look_cracked_for_real_and_watch_people_react_like_your_phone_is_actually_damaged),
                 illustrationResId = R.drawable.onboard_three,
                 crackBgResId = R.drawable.onboard_three
             )
@@ -79,9 +79,9 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>(FragmentOnBoa
 
                 // If on final item screen, we can dynamically change "Next" button layout context if needed
                 if (position == onboardingPages.size - 1) {
-                    binding.btnNext.text = "Next "
+                    binding.btnNext.text = getString(R.string.next)
                 } else {
-                    binding.btnNext.text = "Next  "
+                    binding.btnNext.text = getString(R.string.next)
                 }
             }
         })

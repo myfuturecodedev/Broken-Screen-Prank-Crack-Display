@@ -11,26 +11,37 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.futurecode.crackdisplayprank.R
 import com.futurecode.crackdisplayprank.adapter.PopularEffectAdapter
+import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
+import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentHomeBinding
 import com.futurecode.crackdisplayprank.model.PopularEffect
+import com.futurecode.crackdisplayprank.notification.NotificationPermissionHelper
 import com.futurecode.crackdisplayprank.utils.OverlayPermissionHelper
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private lateinit var popularAdapter: PopularEffectAdapter
     private val effectsData = ArrayList<PopularEffect>()
+    private val notificationPermissionHelper = NotificationPermissionHelper(this)
+    private var isScreenRefreshed = false
+    private lateinit var nativeAdsHelper: NativeAdsHelper
+    lateinit var fullScreenAdsHelper: FullScreenAdsHelper
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        nativeAdsHelper= NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
 
         setupAppLogoHeader()
         initMockData()
         setupPopularEffectsList()
         setupListeners()
-
+        loanNativeAds()
         val packageName: String = requireContext().packageName
         Log.d("WARecoveryFragment", "gcgjff$packageName")
+        notificationPermissionHelper.checkAndRequestPermission(isRefresh = isScreenRefreshed)
+        isScreenRefreshed = true
 
     }
 
@@ -60,13 +71,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         // Populate standard visual damage presets matching design screen items
         effectsData.add(
-            PopularEffect("1", "Spider Crack", R.drawable.ic_spider, "SPIDER")
+            PopularEffect("1", getString(R.string.spider_crack), R.drawable.ic_spider, "SPIDER")
         )
         effectsData.add(
-            PopularEffect("2", "Bullet Impact", R.drawable.ic_bullet, "BULLET")
+            PopularEffect("2", getString(R.string.bullet_effects), R.drawable.ic_bullet, "BULLET")
         )
         effectsData.add(
-            PopularEffect("3", "LED Color Screen", R.drawable.ic_led, "LED")
+            PopularEffect("3", getString(R.string.led_color_screen), R.drawable.ic_led, "LED")
         )
     }
 
@@ -132,11 +143,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
 
         binding.btnSeeAll.setOnClickListener {
-            Toast.makeText(
-                requireContext(),
-                "Viewing All Premium Effects Collection",
-                Toast.LENGTH_SHORT
-            ).show()
+//            Toast.makeText(
+//                requireContext(),
+//                "Viewing All Premium Effects Collection",
+//                Toast.LENGTH_SHORT
+//            ).show()
+
+            navigateToPrankConfiguration("DEFAULT", "Glass Break")
+
+
         }
 
         binding.btnSeeAll.setOnClickListener {
@@ -148,15 +163,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         // Cache parameters inside Base prefManager or pass directly inside bundle
         prefManager.selectedLanguage = type // Custom reuse state pattern
 
-        // Jetpack Navigation routing framework triggers
-
         val bundle = Bundle().apply {
             putString("PRANK_TYPE", type)
             putString("PRANK_TITLE", title)
         }
         findNavController().navigate(R.id.action_homeFragment_to_brokenScreenFragment, bundle)
 
-        Toast.makeText(requireContext(), "Launching config details for: $title", Toast.LENGTH_SHORT)
-            .show()
+        //Toast.makeText(requireContext(), "Launching config details for: $title", Toast.LENGTH_SHORT).show()
+    }
+
+    fun loanNativeAds(){
+        nativeAdsHelper = NativeAdsHelper(requireActivity())
+        nativeAdsHelper?.showNativeAd(
+            nativeBannerAdView = binding.nativeAds3.frame,
+            mainLayout = binding.nativeAds3.mainLayout,
+            placeholder = binding.nativeAds3.placeholder
+        )
     }
 }

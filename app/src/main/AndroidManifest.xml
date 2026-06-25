@@ -23,9 +23,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BROKENSCREENPRANK">
 
-<!--        android:theme="@style/Theme.BROKENSCREENPRANK"-->
-
-
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
@@ -38,11 +35,6 @@
 
         <activity android:name=".activity.HomeActivity"
             android:exported="true"/>
-
-<!--        <service-->
-<!--            android:name=".utils.BrokenScreenService"-->
-<!--            android:exported="false"-->
-<!--            android:stopWithTask="true" />-->
 
         <service
             android:name=".utils.BrokenScreenService"

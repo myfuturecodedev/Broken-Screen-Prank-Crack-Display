@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.afterlogin.BrokenScreenFragment">
+    tools:context=".ui.afterlogin.BrokenScreenFragment"
+    android:background="@color/lang_bg_dark">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarLayout"
@@ -64,7 +65,6 @@
             android:scaleType="centerInside"
             android:src="@drawable/ic_settings"
             android:contentDescription="Settings Panel"
-            app:tint="@color/lang_text_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +78,7 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:paddingHorizontal="14dp"
-        android:paddingVertical="8dp"
+        android:paddingBottom="@dimen/_60sdp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"

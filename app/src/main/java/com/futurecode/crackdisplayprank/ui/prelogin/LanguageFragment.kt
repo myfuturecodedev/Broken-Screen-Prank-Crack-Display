@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.futurecode.crackdisplayprank.activity.MainActivity
 import com.futurecode.crackdisplayprank.activity.MyApplication
 import com.futurecode.crackdisplayprank.adapter.LanguageAdapter
+import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
+import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentLanguageBinding
 import com.futurecode.crackdisplayprank.model.LanguageListItem
@@ -20,6 +22,8 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
     private lateinit var adapter: LanguageAdapter
 
     // Core selection language dataset aligned with your design mockup
+
+
     private val masterLanguageList = arrayListOf(
         LanguageModel("en", "English", "English", "🇺🇸", "POPULAR LANGUAGES"),
         LanguageModel("hi", "हिन्दी", "Hindi", "🇮🇳", "POPULAR LANGUAGES"),
@@ -31,9 +35,13 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
 
     private var currentlySelectedCode = "en"
     private var searchQuery = ""
+    private lateinit var nativeAdsHelper: NativeAdsHelper
+    lateinit var fullScreenAdsHelper: FullScreenAdsHelper
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        nativeAdsHelper= NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
 
         // Read saved setting context directly from your base prefManager object
         currentlySelectedCode = prefManager.selectedLanguage ?: "en"
@@ -41,13 +49,17 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
         setupRecyclerView()
         setupListeners()
         refreshList()
+        loanNativeAds()
     }
 
     private fun setupRecyclerView() {
-        adapter = LanguageAdapter { clickedLanguage ->
+
+        adapter = LanguageAdapter(requireActivity()) { clickedLanguage ->
             currentlySelectedCode = clickedLanguage.code
             refreshList()
         }
+
+
         binding.rvLanguages.layoutManager = LinearLayoutManager(requireContext())
         binding.rvLanguages.adapter = adapter
     }
@@ -92,11 +104,6 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
         binding.btnClearSearch.setOnClickListener {
             binding.etSearch.text.clear()
         }
-
-        // Interactive Ad placement button trigger handler
-        binding.btnAdPlay.setOnClickListener {
-            // Placeholder interaction hook for bottom banner
-        }
     }
 
     private fun refreshList() {
@@ -121,4 +128,15 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
 
         adapter.submitList(filteredItems, currentlySelectedCode)
     }
+
+
+    fun loanNativeAds(){
+        nativeAdsHelper = NativeAdsHelper(requireActivity())
+        nativeAdsHelper?.showNativeAd(
+            nativeBannerAdView = binding.nativeAds3.frame,
+            mainLayout = binding.nativeAds3.mainLayout,
+            placeholder = binding.nativeAds3.placeholder
+        )
+    }
+
 }

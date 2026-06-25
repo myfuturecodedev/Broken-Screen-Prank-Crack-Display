@@ -13,11 +13,9 @@ import com.futurecode.crackdisplayprank.activity.MyApplication
 
 class NotificationPermissionHelper(private val fragment: Fragment) {
 
-    // 1. Register the launcher immediately using only the fragment instance
     private val requestPermissionLauncher =
         fragment.registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
-                // Safely grab the context now that the fragment is fully attached and operational
                 val safeContext = fragment.requireContext()
                 NotificationScheduler.startNotificationWorker(safeContext)
                 MyApplication.app.prefManager.isNotificationStarts = true
@@ -28,8 +26,8 @@ class NotificationPermissionHelper(private val fragment: Fragment) {
             }
         }
 
-    // 2. Main check and request execution block
-    fun checkAndRequestPermission() {
+    // ✅ FIXED: Added isRefresh flag boundary check to avoid duplicate background loops
+    fun checkAndRequestPermission(isRefresh: Boolean = false) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val safeContext = fragment.requireContext()
 
@@ -39,8 +37,14 @@ class NotificationPermissionHelper(private val fragment: Fragment) {
                     Manifest.permission.POST_NOTIFICATIONS
                 ) == PackageManager.PERMISSION_GRANTED -> {
                     Log.d("NotificationHelper", "Permission already granted.")
-                    NotificationScheduler.startNotificationWorker(safeContext)
-                    MyApplication.app.prefManager.isNotificationStarts = true
+
+                    // ⚠️ CRITICAL CONTROL: Only execute worker trigger if it's first app session initialization loop
+                    if (!isRefresh) {
+                        NotificationScheduler.startNotificationWorker(safeContext)
+                        MyApplication.app.prefManager.isNotificationStarts = true
+                    } else {
+                        Log.d("NotificationHelper", "Skipping worker trigger chain. Session already operational.")
+                    }
                 }
                 fragment.shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {
                     requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
@@ -50,7 +54,11 @@ class NotificationPermissionHelper(private val fragment: Fragment) {
                 }
             }
         } else {
-            Log.d("NotificationHelper", "Android < 13 detected. No runtime permission required.")
+            Log.d("NotificationHelper", "Android < 13 detected. Executing direct session check workflows.")
+            if (!isRefresh) {
+                NotificationScheduler.startNotificationWorker(fragment.requireContext())
+                MyApplication.app.prefManager.isNotificationStarts = true
+            }
         }
     }
 }

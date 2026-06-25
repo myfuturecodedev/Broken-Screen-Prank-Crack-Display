@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Broken Screen Prank: Crack Display</string>
     <string name="install">Install</string>
@@ -120,4 +121,15 @@
     <string name="return_to_the_home_screen_and_perform_the_action_to_activate">Return to the home screen and perform the action to activate.</string>
     <string name="when_you_re_done_pranking">When you\'re done pranking:</string>
     <string name="loading">Loading</string>
+    <string name="prank_people">Prank People</string>
+    <string name="create_realistic_broken_screen_effects_and_surprise_your_friends_with_hilarious_reactions">Create realistic broken screen effects and surprise your friends with hilarious reactions.</string>
+    <string name="around_you">Around You</string>
+    <string name="realistic_broken">Realistic Broken</string>
+    <string name="screen_effect">Screen Effect</string>
+    <string name="enjoy_sharp_crack_visuals_and_glass_damage_effects_that_look_real_enough_to_prank_your_friends">Enjoy sharp crack visuals and glass damage effects that look real enough to prank your friends.</string>
+    <string name="everyone_thinks_your">Everyone Thinks Your</string>
+    <string name="phone_is_broken">Phone Is Broken</string>
+    <string name="make_your_screen_look_cracked_for_real_and_watch_people_react_like_your_phone_is_actually_damaged">Make your screen look cracked for real and watch people react like your phone is actually damaged.</string>
+    <string name="led_color_screen">LED Color Screen</string>
+    <string name="default_text">DEFAULT</string>
 </resources>

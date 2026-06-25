@@ -7,21 +7,30 @@ import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.futurecode.crackdisplayprank.R
+import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
+import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentSettingBinding
 
 class SettingsFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBinding::inflate) {
+    private lateinit var nativeAdsHelper: NativeAdsHelper
+    lateinit var fullScreenAdsHelper: FullScreenAdsHelper
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        nativeAdsHelper= NativeAdsHelper(requireActivity())
+        fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
 
         setupPreferenceStates()
         setupListeners()
+
+        loanNativeAds()
     }
 
     private fun setupPreferenceStates() {
         // Read configuration settings from preference manager cleanly
-      //  binding.switchVibrate.isChecked = prefManager.isVibrationEnabled
+        binding.switchVibrate.isChecked = prefManager.isVibrationEnabled
     }
 
     private fun setupListeners() {
@@ -35,13 +44,6 @@ class SettingsFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBin
           //  Toast.makeText(requireContext(), "Opening Help Instructions...", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_global_to_howToUseFragment)
         }
-
-        // 3. Vibrate Toggle Switch (Synchronizes with local storage)
-//        binding.switchVibrate.setOnCheckedChangeListener { _, isChecked ->
-//            prefManager.isVibrationEnabled = isChecked
-//            val stateText = if (isChecked) "Haptic Feedback Enabled" else "Haptic Feedback Disabled"
-//            Toast.makeText(requireContext(), stateText, Toast.LENGTH_SHORT).show()
-//        }
 
         // 4. Change Language Button
         binding.layoutLanguageRow.setOnClickListener {
@@ -61,26 +63,38 @@ class SettingsFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBin
 
         // 6. Share Prank with Friends Action
         binding.layoutShareRow.setOnClickListener {
-//            val shareText = "Hey! Check out this awesome Broken Screen Prank app! Shatter your phone screen realistically. Download now: https://play.google.com/store/apps/details?id=${requireContext().packageName}"
-//            val intent = Intent(Intent.ACTION_SEND).apply {
-//                type = "text/plain"
-//                putExtra(Intent.EXTRA_TEXT, shareText)
-//            }
-//            startActivity(Intent.createChooser(intent, "Share Prank via"))
-
             findNavController().navigate(R.id.action_global_to_shareAndPrankFragment)
         }
 
         // 7. Privacy Policy Browser Navigation
         binding.layoutPrivacy.setOnClickListener {
-            val url = "https://www.google.com" // Update directly with your specific static policy URL
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(intent)
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(prefManager.privacyPolicy ?: "")) // Replace with actual URL
+            startActivity(browserIntent)
         }
 
-        // 8. Bottom Trivia Ad interaction click handler
-//        binding.btnAdPlay.setOnClickListener {
-//            Toast.makeText(requireContext(), "Launching Trivia Webview Game...", Toast.LENGTH_SHORT).show()
-//        }
+
+        // ✅ FIXED: Explicitly stores 'true' when enabled, and 'false' when disabled
+        binding.switchVibrate.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Jab enable (checked) ho, tab explicitly 'true' store hoga
+                prefManager.isVibrationEnabled = true
+                Toast.makeText(requireContext(), "Vibration Enabled", Toast.LENGTH_SHORT).show()
+            } else {
+                // Jab disable (unchecked) ho, tab explicitly 'false' store hoga
+                prefManager.isVibrationEnabled = false
+                Toast.makeText(requireContext(), "Vibration Disabled", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+
+    fun loanNativeAds(){
+        nativeAdsHelper = NativeAdsHelper(requireActivity())
+        nativeAdsHelper?.showNativeAd(
+            nativeBannerAdView = binding.nativeAds3.frame,
+            mainLayout = binding.nativeAds3.mainLayout,
+            placeholder = binding.nativeAds3.placeholder
+        )
     }
 }

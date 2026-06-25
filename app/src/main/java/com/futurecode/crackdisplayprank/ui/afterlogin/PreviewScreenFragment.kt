@@ -69,14 +69,14 @@ class PreviewScreenFragment : BaseFragment<FragmentPreviewScreenBinding>(Fragmen
             findNavController().navigate(R.id.action_global_to_howToUseFragment)
         }
 
-        // Left Start Button (Matte Style)
-//        binding.btnStartPrankCyan.setOnClickListener {
-//            launchBackgroundPrankEngine()
-//        }
-
         // Right Start Button (Glowing Radiant Cyan Style)
         binding.btnStartPrankCyan.setOnClickListener {
             launchBackgroundPrankEngine()
+        }
+
+        binding.btnGoBack.setOnClickListener {
+            findNavController().popBackStack()
+
         }
     }
 
@@ -96,7 +96,7 @@ class PreviewScreenFragment : BaseFragment<FragmentPreviewScreenBinding>(Fragmen
 
         // Pack identical visual assets as intent extras and launch foreground task safely
         val serviceIntent = Intent(requireContext(), BrokenScreenService::class.java).apply {
-            putExtra(BrokenScreenService.EXTRA_BACKGROUND, selectedBgRes)
+            putExtra(BrokenScreenService.EXTRA_BACKGROUND, selectedCrackRes)
             putExtra(BrokenScreenService.EXTRA_CRACK, selectedCrackRes)
             putExtra(BrokenScreenService.EXTRA_TOUCH_CATCHER, true) // Arms touch catcher by default
         }

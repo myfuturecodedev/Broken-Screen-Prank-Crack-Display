@@ -318,6 +318,7 @@
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutSupport"
                 android:layout_width="match_parent"
                 android:layout_height="144dp"
                 android:background="@drawable/bg_settings_card">
@@ -471,11 +472,20 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+            <include
+                android:id="@+id/native_ads_3"
+                layout="@layout/native_ads_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:layout_constraintTop_toBottomOf="@+id/glQuickActions"
+                />
+
             <!-- ================= LEGAL SECTION ================= -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:letterSpacing="0.08"
                 android:text="@string/legal"
@@ -490,7 +500,8 @@
                 android:layout_height="72dp"
                 android:background="@drawable/bg_settings_card"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:layout_marginBottom="@dimen/_100sdp">
 
                 <FrameLayout
                     android:id="@+id/iconFramePrivacy"

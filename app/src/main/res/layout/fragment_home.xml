@@ -168,7 +168,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnActionSpider"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_86sdp"
+                android:layout_height="@dimen/_84sdp"
                 android:layout_columnWeight="1"
                 android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/bg_quick_action_card"
@@ -178,8 +178,8 @@
                 <!-- Squircle Icon Background -->
                 <FrameLayout
                     android:id="@+id/flIconSpider"
-                    android:layout_width="@dimen/_36sdp"
-                    android:layout_height="@dimen/_36sdp"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_marginStart="@dimen/_12sdp"
                     android:layout_marginTop="@dimen/_12sdp"
                     android:background="@drawable/bg_icon_squircle"
@@ -188,8 +188,8 @@
 
                     <ImageView
                         android:id="@+id/emojiSpider"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_spider_crack" />
                 </FrameLayout>
@@ -202,8 +202,7 @@
                     android:layout_marginEnd="@dimen/_12sdp"
                     android:text="@string/spider_crack"
                     android:textColor="@color/lang_text_white"
-                    android:textSize="@dimen/_11ssp"
-                    android:textStyle="bold"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintTop_toBottomOf="@id/flIconSpider"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -214,7 +213,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnActionTouch"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_86sdp"
+                android:layout_height="@dimen/_84sdp"
                 android:layout_columnWeight="1"
                 android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/bg_quick_action_card"
@@ -224,8 +223,8 @@
                 <!-- Squircle Icon Background -->
                 <FrameLayout
                     android:id="@+id/flIconTouch"
-                    android:layout_width="@dimen/_36sdp"
-                    android:layout_height="@dimen/_36sdp"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_marginStart="@dimen/_12sdp"
                     android:layout_marginTop="@dimen/_12sdp"
                     android:background="@drawable/bg_icon_squircle"
@@ -248,8 +247,7 @@
                     android:layout_marginEnd="@dimen/_12sdp"
                     android:text="@string/touch_effects"
                     android:textColor="@color/lang_text_white"
-                    android:textSize="@dimen/_11ssp"
-                    android:textStyle="bold"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintTop_toBottomOf="@id/flIconTouch"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -260,7 +258,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnActionBullet"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_86sdp"
+                android:layout_height="@dimen/_84sdp"
                 android:layout_columnWeight="1"
                 android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/bg_quick_action_card"
@@ -270,8 +268,8 @@
                 <!-- Squircle Icon Background -->
                 <FrameLayout
                     android:id="@+id/flIconBullet"
-                    android:layout_width="@dimen/_36sdp"
-                    android:layout_height="@dimen/_36sdp"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_marginStart="@dimen/_12sdp"
                     android:layout_marginTop="@dimen/_12sdp"
                     android:background="@drawable/bg_icon_squircle"
@@ -294,8 +292,7 @@
                     android:layout_marginEnd="@dimen/_12sdp"
                     android:text="@string/bullet_effects"
                     android:textColor="@color/lang_text_white"
-                    android:textSize="@dimen/_11ssp"
-                    android:textStyle="bold"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintTop_toBottomOf="@id/flIconBullet"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -306,7 +303,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnActionLed"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_86sdp"
+                android:layout_height="@dimen/_84sdp"
                 android:layout_columnWeight="1"
                 android:layout_margin="@dimen/_4sdp"
                 android:background="@drawable/bg_quick_action_card"
@@ -316,8 +313,8 @@
                 <!-- Squircle Icon Background -->
                 <FrameLayout
                     android:id="@+id/flIconLed"
-                    android:layout_width="@dimen/_36sdp"
-                    android:layout_height="@dimen/_36sdp"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_marginStart="@dimen/_12sdp"
                     android:layout_marginTop="@dimen/_12sdp"
                     android:background="@drawable/bg_icon_squircle"
@@ -340,8 +337,7 @@
                     android:layout_marginEnd="@dimen/_12sdp"
                     android:text="@string/led_effects"
                     android:textColor="@color/lang_text_white"
-                    android:textSize="@dimen/_11ssp"
-                    android:textStyle="bold"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintTop_toBottomOf="@id/flIconLed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -349,6 +345,18 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </GridLayout>
+
+
+        <include
+            android:id="@+id/native_ads_3"
+            layout="@layout/native_ads_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+            app:layout_constraintTop_toBottomOf="@+id/glQuickActions"
+            />
 
         <!-- 4. Popular Effects Title Header -->
         <TextView
@@ -362,7 +370,7 @@
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/glQuickActions" />
+            app:layout_constraintTop_toBottomOf="@id/native_ads_3" />
 
         <TextView
             android:id="@+id/btnSeeAll"
@@ -382,6 +390,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_60sdp"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/_10sdp"

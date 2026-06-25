@@ -197,6 +197,13 @@ class PrefManager private constructor(private val context: Context) {
             editor.putBoolean("IS_LANGUAGE_SELECTED", value).apply()
         }
 
+
+    var isVibrationEnabled: Boolean
+        get() = sharedPref.getBoolean("IS_VIBRATIONENABLED", false) // Defaults to true
+        set(value) {
+            editor.putBoolean("IS_VIBRATIONENABLED", value).apply()
+        }
+
     var notificationList: String
         get() = sharedPref.getString(AppConstants.NotificationsList.name, "") ?: ""
         set(value) {

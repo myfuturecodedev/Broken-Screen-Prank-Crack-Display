@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">टूटी स्क्रीन प्रैंक: क्रैक डिस्प्ले</string>
+    <string name="install">इंस्टॉल करें</string>
+    <string name="hello_blank_fragment">हैलो ब्लैंक फ्रैगमेंट</string>
+    <string name="choose_language">भाषा चुनें</string>
+    <string name="done">पूर्ण</string>
+    <string name="search_language">भाषा खोजें...</string>
+    <string name="how_it_works">यह कैसे काम करता है</string>
+    <string name="step_01">01</string>
+    <string name="choose_an_effect">एक प्रभाव चुनें</string>
+    <string name="choose_an_effect_desc">उपलब्ध टूटी स्क्रीन\nप्रभावों को देखें और अपनी पसंदीदा\nप्रैंक शैली चुनें।</string>
+    <string name="step_02">02</string>
+    <string name="configure_trigger">ट्रिगर कॉन्फ़िगर करें</string>
+    <string name="configure_trigger_desc">चुनें कि प्रैंक कैसे शुरू होना चाहिए।</string>
+
+    <string name="touch">टच (TOUCH)</string>
+    <string name="shake">शेक (SHAKE)</string>
+    <string name="timer">टाइमर (TIMER)</string>
+    <string name="start_prank">प्रैंक शुरू करें</string>
+    <string name="step_03">03</string>
+    <string name="trigger_prank">प्रैंक सक्रिय करें</string>
+    <string name="trigger_prank_desc">होम स्क्रीन पर वापस आएं और\nसक्रिय करने के लिए कार्रवाई करें।</string>
+    <string name="trigger_prank_hint">\"टच करते ही स्क्रीन तुरंत \'क्रैक\' हो जाएगी\"</string>
+    <string name="step_04">04</string>
+    <string name="turn_off_effect">प्रभाव बंद करें</string>
+    <string name="turn_off_effect_desc">जब आपका प्रैंक समाप्त हो जाए:</string>
+    <string name="open_the_app_again">ऐप को फिर से खोलें</string>
+    <string name="use_the_notification">नोटिफिकेशन का उपयोग करें</string>
+    <string name="got_it_let_s_go">समझ गए, चलिए शुरू करते हैं!</string>
+    <string name="need_more_help_visit_support">अधिक सहायता चाहिए? सपोर्ट पर जाएं</string>
+
+    <!-- STREAMING_CHUNK: Translating accessibility description guidelines... -->
+    <string name="desc_back">पीछे</string>
+    <string name="desc_help">सहायता</string>
+    <string name="desc_gallery_preview">गैलery का पूर्वावलोकन</string>
+    <string name="desc_phone_illustration">फोन का चित्र</string>
+    <string name="desc_trigger">ट्रिगर</string>
+    <string name="broken_screen">टूटी हुई स्क्रीन</string>
+    <string name="choose_your_effect">अपना प्रभाव चुनें</string>
+    <string name="select_a_realistic_effect">एक यथार्थवादी टूटी स्क्रीन प्रभाव चुनें।</string>
+    <string name="preview_effect">प्रभाव का पूर्वावलोकन</string>
+    <string name="choose_activation_method">सक्रियण विधि चुनें</string>
+    <string name="touch_title">टच</string>
+    <string name="touch_desc">तुरंत सक्रिय करने के लिए स्क्रीन पर टैप करें।</string>
+    <string name="shake_title">शेक</string>
+    <string name="shake_desc">प्रैंक सक्रिय करने के लिए डिवाइस को हिलाएं।</string>
+    <string name="timer_title">टाइमर</string>
+    <string name="timer_desc">एक निश्चित समय के बाद स्वचालित रूप से सक्रिय करें।</string>
+    <string name="pro_tip">प्रो टिप</string>
+    <string name="pro_tip_desc">किसी मित्र को अपना फोन सौंपते समय टच मोड सबसे यथार्थवादी प्रैंक\nप्रतिक्रियाएं उत्पन्न करता है।</string>
+    <string name="ready_to_fool_your_friends">अपने दोस्तों को बेवकूफ बनाने के लिए तैयार हैं?</string>
+
+    <!-- STREAMING_CHUNK: Translating timers parameters... -->
+    <string name="off">बंद</string>
+    <string name="time_10s">10 सेकेंड</string>
+    <string name="time_15s">15 सेकेंड</string>
+    <string name="time_20s">20 सेकेंड</string>
+    <string name="time_30s">30 सेकेंड</string>
+    <string name="time_1m">1 मिनट</string>
+    <string name="time_2m">2 मिनट</string>
+
+    <!-- STREAMING_CHUNK: Translating interface components... -->
+    <string name="desc_previous_effect">पिछला प्रभाव</string>
+    <string name="desc_current_effect">वर्तमान प्रभाव</string>
+    <string name="desc_crack_overlay">क्रैक ओवरले</string>
+    <string name="desc_next_effect">अगला प्रभाव</string>
+    <string name="desc_touch_icon">टच आइकन</string>
+    <string name="desc_selected">चयनित</string>
+    <string name="desc_shake_icon">शेक आइकन</string>
+    <string name="desc_timer_icon">टाइमर आइकन</string>
+    <string name="desc_tip_icon">टिप आइकन</string>
+    <string name="back">पीछे</string>
+    <string name="select_a_realistic_broken_screen_effect">एक यथार्थवादी टूटी स्क्रीन प्रभाव का चयन करें।</string>
+    <string name="tap_screen_to_activate_instantly">तुरंत सक्रिय करने के लिए स्क्रीन पर टैप करें।</string>
+    <string name="shake_device_to_trigger_the_prank">प्रैंक सक्रिय करने के लिए डिवाइस को हिलाएं।</string>
+    <string name="activate_automatically_after_a_delay">एक निश्चित समय के बाद स्वचालित रूप से सक्रिय करें।</string>
+    <string name="touch_mode_creates_the_most_realistic_prank_reactions_when_handing_your_phone_to_a_friend">किसी मित्र को अपना phone सौंपते समय टच मोड सबसे यथार्थवादी प्रैंक प्रतिक्रियाएं उत्पन्न करता है।</string>
+    <string name="fakebroken">FakeBroken</string>
+    <string name="prank_your_friends_with_realistic_screen_cracks_and_damage_effects">यथार्थवादी स्क्रीन क्रैक और क्षति प्रभावों के साथ अपने दोस्तों के साथ प्रैंक करें।</string>
+    <string name="quick_actions">⚡ त्वरित कार्रवाइयां</string>
+    <string name="spider_crack">स्पाइडर क्रैक</string>
+    <string name="touch_effects">टच प्रभाव</string>
+    <string name="bullet_effects">बुलेट प्रभाव</string>
+    <string name="led_effects">एलईडी प्रभाव</string>
+    <string name="popular_effects">लोकप्रिय प्रभाव</string>
+    <string name="see_all">सभी देखें</string>
+    <string name="ad">विज्ञापन</string>
+    <string name="skip">छोड़ें</string>
+    <string name="next">आगे</string>
+
+    <!-- STREAMING_CHUNK: Translating preferences and support components... -->
+    <string name="settings">सेटिंग्स</string>
+    <string name="help_amp_usage"><![CDATA[सहायता और उपयोग]]></string>
+    <string name="how_to_use_the_effect">प्रभाव का उपयोग कैसे करें</string>
+    <string name="learn_how_to_activate_prank_effects">प्रैंक प्रभावों को सक्रिय करना सीखें</string>
+    <string name="effect_preferences">प्रभाव प्राथमिकताएं</string>
+    <string name="vibrate_on_break">टूटने पर कंपन</string>
+    <string name="haptic_feedback_for_realistic_impact">यथार्थवादी प्रभाव के लिए हैप्टिक प्रतिक्रिया</string>
+    <string name="change_language">भाषा बदलें</string>
+    <string name="english_us">अंग्रेजी (यूएस)</string>
+    <string name="support_amp_feedback"><![CDATA[सहायता और प्रतिक्रिया]]></string>
+    <string name="rate_app">ऐप को रेट करें</string>
+    <string name="share_your_experience_with_us">हमारे साथ अपना अनुभव साझा करें</string>
+    <string name="share_to_friends">दोस्तों के साथ साझा करें</string>
+    <string name="invite_friends_to_try_the_prank">दोस्तों को प्रैंक आजमाने के लिए आमंत्रित करें</string>
+    <string name="legal">कानूनी</string>
+    <string name="privacy_policy">गोपनीयता नीति</string>
+    <string name="how_we_handle_your_data">हम आपके डेटा को कैसे संभालते हैं</string>
+
+    <!-- STREAMING_CHUNK: Translating sharing mechanisms... -->
+    <string name="share_amp_prank"><![CDATA[साझा करें और प्रैंक करें]]></string>
+    <string name="give_your_friends_a_nlittle_scare">अपने दोस्तों को थोड़ा\nडराएं 😱</string>
+    <string name="share_the_app_and_surprise_your_friends_nwith_realistic_broken_screen_prank_effects">ऐप साझा करें और अपने दोस्तों को\nयथार्थवादी टूटी स्क्रीन प्रभावों के साथ आश्चर्यचकित करें।</string>
+    <string name="scan_amp_install"><![CDATA[स्कैन और इंस्टॉल करें]]></string>
+    <string name="friends_can_scan_this_code_to_instantly_download_nthe_prank_app">दोस्त प्रैंक ऐप को तुरंत डाउनलोड करने\nके लिए इस कोड को स्कैन कर सकते हैं।</string>
+    <string name="share_link">लिंक साझा करें</string>
+    <string name="copy_link">लिंक कॉपी करें</string>
+    <string name="why_share">साझा क्यों करें?</string>
+    <string name="easy_qr_download">आसान क्यूआर डाउनलोड</string>
+    <string name="realistic_crack_effects">यथार्थवादी क्रैक प्रभाव</string>
+    <string name="funny_reactions_guaranteed">मजेदार प्रतिक्रियाओं की गारंटी</string>
+    <string name="quick_prank_setup">त्वरित प्रैंक सेटअप</string>
+    <string name="english">अंग्रेजी</string>
+    <string name="united_states">संयुक्त राज्य अमेरिका</string>
+    <string name="_01">01</string>
+    <string name="browse_available_broken_screen_effects_and_select_your_preferred_prank_style">उपलब्ध टूटी स्क्रीन प्रभावों को ब्राउज़ करें और अपनी पसंदीदा प्रैंक शैली चुनें।</string>
+    <string name="_02">02</string>
+    <string name="choose_how_the_prank_should_start">चुनें कि प्रैंक कैसे शुरू होना चाहिए।</string>
+    <string name="return_to_the_home_screen_and_perform_the_action_to_activate">होम स्क्रीन पर वापस जाएं और सक्रिय करने के लिए कार्रवाई करें।</string>
+    <string name="when_you_re_done_pranking">जब आपका प्रैंक समाप्त हो जाए:</string>
+
+    <!-- STREAMING_CHUNK: Translating onboarding slides components... -->
+    <string name="loading">लोड हो रहा है...</string>
+    <string name="prank_people">लोगों के साथ प्रैंक करें</string>
+    <string name="create_realistic_broken_screen_effects_and_surprise_your_friends_with_hilarious_reactions">यथार्थवादी टूटी हुई स्क्रीन प्रभाव बनाएं और अपने दोस्तों को प्रफुल्लित करने वाली प्रतिक्रियाओं से आश्चर्यचकित करें।</string>
+    <string name="around_you">अपने आस-पास</string>
+    <string name="realistic_broken">यथार्थवादी टूटा हुआ</string>
+    <string name="screen_effect">Screen Effect</string>
+    <string name="enjoy_sharp_crack_visuals_and_glass_damage_effects_that_look_real_enough_to_prank_your_friends">तेज क्रैक विजुअल्स और कांच के नुकसान के प्रभावों का आनंद लें जो आपके दोस्तों के साथ प्रैंक करने के लिए वास्तविक लगते हैं।</string>
+    <string name="everyone_thinks_your">सब सोचेंगे कि आपका</string>
+    <string name="phone_is_broken">फोन टूटा हुआ है</string>
+    <string name="make_your_screen_look_cracked_for_real_and_watch_people_react_like_your_phone_is_actually_damaged">अपनी स्क्रीन को सचमुच टूटा हुआ दिखाएं और लोगों की प्रतिक्रिया देखें जैसे आपका फोन वास्तव में क्षतिग्रस्त हो गया है।</string>
+    <string name="led_color_screen">एलईडी रंगीन स्क्रीन</string>
+    <string name="default_text">डिफ़ॉल्ट</string>
+</resources>

@@ -7,40 +7,6 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import kotlin.math.sqrt
 
-//class ShakeDetector(
-//    private val onShake: () -> Unit
-//) : SensorEventListener {
-//
-//    private var lastShakeTime = 0L
-//
-//    override fun onSensorChanged(event: SensorEvent?) {
-//
-//        if (event == null) return
-//
-//        val x = event.values[0]
-//        val y = event.values[1]
-//        val z = event.values[2]
-//
-//        val acceleration =
-//            sqrt((x * x + y * y + z * z).toDouble())
-//
-//        if (acceleration > 15) {
-//
-//            val now = System.currentTimeMillis()
-//
-//            if (now - lastShakeTime > 1500) {
-//                lastShakeTime = now
-//                onShake.invoke()
-//            }
-//        }
-//    }
-//
-//    override fun onAccuracyChanged(
-//        sensor: Sensor?,
-//        accuracy: Int
-//    ) {}
-//}
-
 
 /**
  * 15-Year Developer Standard: Thread-safe shake G-force sensor metrics calculator.
