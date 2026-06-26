@@ -233,8 +233,8 @@
 
                     <ImageView
                         android:id="@+id/emojiTouch"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
+                        android:layout_width="@dimen/_28sdp"
+                        android:layout_height="@dimen/_28sdp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_touch_effect" />
                 </FrameLayout>
@@ -278,8 +278,8 @@
 
                     <ImageView
                         android:id="@+id/emojiBullet"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
+                        android:layout_width="@dimen/_28sdp"
+                        android:layout_height="@dimen/_28sdp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_bullet_effect" />
                 </FrameLayout>
@@ -323,8 +323,8 @@
 
                     <ImageView
                         android:id="@+id/emojiLed"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
+                        android:layout_width="@dimen/_28sdp"
+                        android:layout_height="@dimen/_28sdp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_led_effect" />
                 </FrameLayout>
@@ -396,89 +396,6 @@
             android:paddingHorizontal="@dimen/_10sdp"
             app:layout_constraintTop_toBottomOf="@id/tvPopularTitle"
             tools:listitem="@layout/item_popular_effect" />
-
-        <!-- 5. Interactive Bottom AD Trivia Banner -->
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/clAdBanner"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="@dimen/_60sdp"-->
-<!--            android:layout_marginHorizontal="@dimen/_14sdp"-->
-<!--            android:layout_marginTop="@dimen/_22sdp"-->
-<!--            android:background="@drawable/bg_tech_quiz_banner"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/rvPopularEffects">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/adBadge"-->
-<!--                android:layout_width="@dimen/_20sdp"-->
-<!--                android:layout_height="@dimen/_12sdp"-->
-<!--                android:background="#007EF2"-->
-<!--                android:gravity="center"-->
-<!--                android:text="@string/ad"-->
-<!--                android:textColor="@color/lang_text_white"-->
-<!--                android:textSize="@dimen/_7ssp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/adBannerIcon"-->
-<!--                android:layout_width="@dimen/_36sdp"-->
-<!--                android:layout_height="@dimen/_36sdp"-->
-<!--                android:layout_marginStart="@dimen/_12sdp"-->
-<!--                android:gravity="center"-->
-<!--                android:text="🧠"-->
-<!--                android:textSize="@dimen/_26ssp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvAdBannerTitle"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/_10sdp"-->
-<!--                android:layout_marginEnd="@dimen/_8sdp"-->
-<!--                android:text="Play Tech Quiz &amp; Earn"-->
-<!--                android:textColor="@color/lang_text_white"-->
-<!--                android:textSize="@dimen/_11ssp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toTopOf="@id/tvAdBannerSub"-->
-<!--                app:layout_constraintEnd_toStartOf="@id/btnAdBannerPlay"-->
-<!--                app:layout_constraintStart_toEndOf="@id/adBannerIcon"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_chainStyle="packed" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvAdBannerSub"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Earn upto 15,000 coins"-->
-<!--                android:textColor="#38BDF8"-->
-<!--                android:textSize="@dimen/_9ssp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toStartOf="@id/btnAdBannerPlay"-->
-<!--                app:layout_constraintStart_toStartOf="@id/tvAdBannerTitle"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/tvAdBannerTitle" />-->
-
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/btnAdBannerPlay"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="@dimen/_26sdp"-->
-<!--                android:layout_marginEnd="@dimen/_12sdp"-->
-<!--                android:backgroundTint="#00C2FF"-->
-<!--                android:insetTop="0dp"-->
-<!--                android:insetBottom="0dp"-->
-<!--                android:text="Play Now"-->
-<!--                android:textAllCaps="false"-->
-<!--                android:textColor="@color/lang_bg_dark"-->
-<!--                android:textSize="@dimen/_9ssp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:cornerRadius="16dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

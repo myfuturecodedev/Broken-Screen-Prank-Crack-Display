@@ -205,28 +205,6 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
         binding.tvTime1m.setOnClickListener { viewModel.setTimerDelay("1m") }
         binding.tvTime2m.setOnClickListener { viewModel.setTimerDelay("2m") }
 
-//        binding.btnStartPrank.setOnClickListener {
-//            // Draw Overlays system permission verification
-//            if (!Settings.canDrawOverlays(requireContext())) {
-//                startActivity(
-//                    Intent(
-//                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-//                        Uri.parse("package:${requireContext().packageName}")
-//                    )
-//                )
-//                return@setOnClickListener
-//            }
-//
-//            if (selectedMethod == "TIMER" && selectedDelay == "OFF") {
-//                Toast.makeText(requireContext(), "Please select a timer delay first!", Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//
-//            // Launch safe foreground task delegation
-//            startBackgroundPrankService()
-//        }
-
-
         // ✅ FIXED: setAdClickListener Integration with correct qualified return labels
         binding.btnStartPrank.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             // Draw Overlays system permission verification

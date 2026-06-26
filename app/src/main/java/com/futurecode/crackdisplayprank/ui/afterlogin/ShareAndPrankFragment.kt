@@ -9,16 +9,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.futurecode.crackdisplayprank.R
 import com.futurecode.crackdisplayprank.ads.interstitial_ad.FullScreenAdsHelper
 import com.futurecode.crackdisplayprank.ads.native_ad.NativeAdsHelper
 import com.futurecode.crackdisplayprank.base.BaseFragment
 import com.futurecode.crackdisplayprank.databinding.FragmentShareAndPrankBinding
+import com.futurecode.crackdisplayprank.utils.ScannerQR
 import com.futurecode.crackdisplayprank.utils.Utils.setAdClickListener
 
 class ShareAndPrankFragment : BaseFragment<FragmentShareAndPrankBinding>(FragmentShareAndPrankBinding::inflate) {
 
     private lateinit var nativeAdsHelper: NativeAdsHelper
     lateinit var fullScreenAdsHelper: FullScreenAdsHelper
+    private var appPlayStoreLink = ""
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,13 +29,16 @@ class ShareAndPrankFragment : BaseFragment<FragmentShareAndPrankBinding>(Fragmen
 
         nativeAdsHelper= NativeAdsHelper(requireActivity())
         fullScreenAdsHelper= FullScreenAdsHelper(requireActivity())
-
+        appPlayStoreLink = ScannerQR.getAppPlayStoreLink(requireContext())
+        setupDynamicQRCode()
 
         loanNativeAds()
+
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
 
         // ✅ FIXED: Implemented dynamic Play Store link copy logic with Toast notification
         binding.btnCopyLink.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
@@ -59,6 +65,25 @@ class ShareAndPrankFragment : BaseFragment<FragmentShareAndPrankBinding>(Fragmen
             } catch (e: Exception) {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackage")))
             }
+        }
+    }
+
+    /**
+     * Generates a high resolution QR Bitmap of the play store URL and binds it to the imageView layout.
+     */
+    private fun setupDynamicQRCode() {
+        try {
+            // Generate QR bitmap dynamically at 512x512 matrix size
+            val qrBitmap = ScannerQR.generateQRCode(appPlayStoreLink, 512)
+            if (qrBitmap != null) {
+                binding.ivQrImage.setImageBitmap(qrBitmap)
+            } else {
+                // Fallback to static asset if generator faces memory issues
+                binding.ivQrImage.setImageResource(R.drawable.ic_qr_code_placeholder)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            binding.ivQrImage.setImageResource(R.drawable.ic_qr_code_placeholder)
         }
     }
 

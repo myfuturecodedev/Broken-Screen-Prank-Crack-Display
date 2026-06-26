@@ -18,6 +18,7 @@ import com.futurecode.crackdisplayprank.utils.PrefManager
 import com.futurecode.crackdisplayprank.utils.Utils
 
 import com.google.android.material.imageview.ShapeableImageView
+import kotlin.code
 
 class NativeAdsHelper(private val activity: Activity) {
 

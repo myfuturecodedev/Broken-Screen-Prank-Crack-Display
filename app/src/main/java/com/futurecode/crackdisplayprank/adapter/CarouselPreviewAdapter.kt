@@ -32,13 +32,13 @@ class CarouselPreviewAdapter(
     override fun getItemCount(): Int = items.size
 
     inner class CarouselViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-       // private val ivCarouselBg: ImageView = itemView.findViewById(R.id.ivCarouselBg)
-        private val ivCarouselCrack: ImageView = itemView.findViewById(R.id.ivCarouselCrack)
+        private val ivCarouselBg: ImageView = itemView.findViewById(R.id.ivCarouselBg)
+      //  private val ivCarouselCrack: ImageView = itemView.findViewById(R.id.ivCarouselCrack)
         private val btnPreviewEffect: View? = itemView.findViewById(R.id.btnPreviewEffect) // Reference button inside card layout
 
         fun bind(item: EffectItem, position: Int) {
-            //ivCarouselBg.setImageResource(item.backgroundImageResId)
-            ivCarouselCrack.setImageResource(item.backgroundImageResId)
+            ivCarouselBg.setImageResource(item.backgroundImageResId)
+           // ivCarouselCrack.setImageResource(item.backgroundImageResId)
 
             itemView.setOnClickListener {
                 onItemClick(position)

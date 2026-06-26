@@ -34,17 +34,8 @@
                     android:id="@+id/ivCarouselBg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/broken_screen_1"
                     android:contentDescription="Mock OS Screen Background"
-                    android:scaleType="centerCrop" />
-
-                <!-- Layer 2: Transparent Glass Crack/Shatter/Overlay -->
-                <ImageView
-                    android:id="@+id/ivCarouselCrack"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="Glass Damage Overlay"
-                    android:scaleType="fitXY" />
+                    android:scaleType="center"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
