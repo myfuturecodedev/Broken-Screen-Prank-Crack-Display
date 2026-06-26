@@ -219,7 +219,7 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
             }
 
             if (selectedMethod == "TIMER" && selectedDelay == "OFF") {
-                Toast.makeText(requireContext(), "Please select a timer delay first!", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "Please select a timer delay first!", Toast.LENGTH_SHORT).show()
                 return@setAdClickListener // ✅ CORRECTED: Label matches function signature scope
             }
 
@@ -272,7 +272,7 @@ class BrokenScreenPreviewFragment : BaseFragment<FragmentBrokenScreenPreviewBind
             "TIMER" -> "Timer Armed! Glass will crack in $selectedDelay."
             else -> "Prank armed!"
         }
-        Toast.makeText(requireContext(), armMessage, Toast.LENGTH_SHORT).show()
+       // Toast.makeText(requireContext(), armMessage, Toast.LENGTH_SHORT).show()
     }
 
     private fun observeViewModelStates() {

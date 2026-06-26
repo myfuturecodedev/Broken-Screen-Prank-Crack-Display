@@ -51,8 +51,6 @@ class PreviewScreenFragment : BaseFragment<FragmentPreviewScreenBinding>(Fragmen
         selectedBgRes = arguments?.getInt("IMAGE") ?: R.drawable.broken_screen_2
         selectedCrackRes = arguments?.getInt("CRACK") ?: R.drawable.broken_screen_1
 
-        Log.d("TAG", "prankType: $prankType")
-        Log.d("TAG", "prankTitle: $prankTitle")
 
         // 3. Render the selected images onto the centered phone mockup layouts
         setupMockupPreview()
