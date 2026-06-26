@@ -23,13 +23,13 @@
             android:src="@drawable/onboard_one" />
 
         <!-- Centered Character + Phone Art Layer -->
-        <ImageView
-            android:id="@+id/ivMainIllustration"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+<!--        <ImageView-->
+<!--            android:id="@+id/ivMainIllustration"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

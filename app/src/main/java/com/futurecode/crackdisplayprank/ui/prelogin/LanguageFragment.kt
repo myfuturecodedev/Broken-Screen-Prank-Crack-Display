@@ -42,6 +42,8 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
     private lateinit var nativeAdsHelper: NativeAdsHelper
     lateinit var fullScreenAdsHelper: FullScreenAdsHelper
 
+    private var pageName: String? = ""
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         nativeAdsHelper = NativeAdsHelper(requireActivity())
@@ -53,6 +55,9 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
         setupRecyclerView()
         setupListeners()
         refreshList()
+
+        pageName = arguments?.getString("pageName")
+
     }
 
     private fun setupRecyclerView() {
@@ -67,17 +72,21 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
 
     private fun setupListeners() {
         // Navigate back safely through NavController framework stack
+
+
         binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
+            if (pageName.equals("splash"))
+                requireActivity().finish()
+            else if (pageName.equals("setting")) {
+                findNavController().popBackStack()
+            } else {
+
+            }
+
         }
 
-
-
-
         // Commit configuration updates to your dynamic Shared Prefs architecture
-//        binding.btnDone.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-
-        binding.btnDone.setOnClickListener {
+        binding.btnDone.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             // ✅ Save to both properties to keep state safe across all application fragments
             prefManager.selectedLanguage = currentlySelectedCode
 
@@ -101,9 +110,11 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>(FragmentLanguageB
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 searchQuery = s?.toString()?.trim() ?: ""
-                binding.btnClearSearch.visibility = if (searchQuery.isNotEmpty()) View.VISIBLE else View.GONE
+                binding.btnClearSearch.visibility =
+                    if (searchQuery.isNotEmpty()) View.VISIBLE else View.GONE
                 refreshList()
             }
+
             override fun afterTextChanged(s: Editable?) {}
         })
 

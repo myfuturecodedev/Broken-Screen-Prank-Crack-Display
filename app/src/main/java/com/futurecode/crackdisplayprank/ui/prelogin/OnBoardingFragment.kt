@@ -143,6 +143,7 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>(FragmentOnBoa
     private fun completeOnboarding() {
         // Mark onboarding complete in preference state manager
         prefManager.isLanguageSelectedFirstTime = true // Route safely to Choose Language Selection
+        prefManager.isOnboardingDone=true
         (activity as? MainActivity)?.goToMain()
 
     }

@@ -47,10 +47,14 @@ class SettingsFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBin
         }
 
         // 4. Change Language Button
-//        binding.layoutLanguageRow.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.layoutLanguageRow.setOnClickListener {
+        binding.layoutLanguageRow.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             // Safe Jetpack navigation back to pre-login language screen context
-           findNavController().navigate(R.id.action_global_to_languageFragment2)
+
+            val bundle= Bundle().apply {
+                putString("pageName","setting")
+            }
+
+           findNavController().navigate(R.id.action_global_to_languageFragment2,bundle)
         }
 
         // 5. Rate Application Trigger

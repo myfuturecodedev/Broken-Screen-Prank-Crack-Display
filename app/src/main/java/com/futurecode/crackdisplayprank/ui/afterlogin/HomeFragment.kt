@@ -100,19 +100,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun setupListeners() {
         // Hero start prank click routing
-//        binding.btnStartPrank.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.btnStartPrank.setOnClickListener {
+        binding.btnStartPrank.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             navigateToPrankConfiguration("DEFAULT", "Glass Break")
         }
 
         // Quick Actions Grid Routing
-//        binding.btnActionSpider.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.btnActionSpider.setOnClickListener {
+        binding.btnActionSpider.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             navigateToPrankConfiguration("SPIDER", "Spider Crack")
         }
 
-//        binding.btnActionTouch.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.btnActionTouch.setOnClickListener {
+        binding.btnActionTouch.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             //navigateToPrankConfiguration("TOUCH", "Touch Spark")
             if (OverlayPermissionHelper.hasPermission(requireContext())) {
                 navigateToPrankConfiguration("TOUCH", "Touch Spark")
@@ -121,13 +118,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
         }
 
-//        binding.btnActionBullet.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.btnActionBullet.setOnClickListener {
+        binding.btnActionBullet.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             navigateToPrankConfiguration("BULLET", "Bullet Glass Damage")
         }
 
-//        binding.btnActionLed.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.btnActionLed.setOnClickListener {
+        binding.btnActionLed.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             if (OverlayPermissionHelper.hasPermission(requireContext())) {
                 navigateToPrankConfiguration("LED", "Screen LED Glow")
             } else {
@@ -136,28 +131,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
 
         // Action Toolbar Triggers
-//        binding.btnSettings.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.btnSettings.setOnClickListener {
+        binding.btnSettings.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
 
             findNavController().navigate(R.id.action_global_to_settingFragment)
         }
 
-//        binding.btnQuickWidget.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.btnQuickWidget.setOnClickListener {
+        binding.btnQuickWidget.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
 
             findNavController().navigate(R.id.action_global_to_shareAndPrankFragment)
         }
 
 
-//        binding.btnSeeAll.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.btnSeeAll.setOnClickListener {
+        binding.btnSeeAll.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
 
             navigateToPrankConfiguration("DEFAULT", "Glass Break")
 
         }
 
-//        binding.btnSeeAll.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
-        binding.btnSeeAll.setOnClickListener {
+        binding.btnSeeAll.setAdClickListener(requireActivity(), fullScreenAdsHelper) {
             navigateToPrankConfiguration("DEFAULT", "Glass Break")
         }
     }

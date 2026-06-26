@@ -90,7 +90,12 @@
     <fragment
         android:id="@+id/languageFragment2"
         android:name="com.futurecode.crackdisplayprank.ui.prelogin.LanguageFragment"
-        android:label="LanguageFragment" />
+        android:label="LanguageFragment" >
+
+        <argument android:name="pageName"
+            app:argType="string"/>
+
+    </fragment>
 
     <action android:id="@+id/action_global_to_languageFragment2"
         app:destination="@id/languageFragment2"/>
